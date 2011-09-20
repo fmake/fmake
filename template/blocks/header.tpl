@@ -21,7 +21,7 @@
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 	[[if xajax]]
 		[[phpcode`
-			$context['xajax']->printJavascript("/libs/xajax/");
+			$context['xajax']->printJavascript();
 		`]]
 	[[endif]]
 </head>
