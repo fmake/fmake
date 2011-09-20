@@ -53,7 +53,7 @@ class __TwigTemplate_ed169f38497eae3467f4cf30a5fcf6b3 extends Twig_Template
             echo "\t\t";
             // line 
             
-			$context['xajax']->printJavascript("/libs/xajax/");
+			$context['xajax']->printJavascript();
 		;
             // line 26
             echo "\t";
