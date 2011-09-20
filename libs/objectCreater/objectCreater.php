@@ -33,15 +33,6 @@
 			$paths = explode(PATH_SEPARATOR, get_include_path());
 			//заменяем _ на / для того что бы загрузить вспомогательные классы в папке
 			$name = str_replace('_', '/', $name);
-			//бежимся только по раннее установленным путям
-			/*for( $i=objectCreater::$startPathSearcher; $i <= objectCreater::$endPathSearcher;$i++){
-				//добавляем путь для класса
-				//$paths[$i] .= $name.DIRECTORY_SEPARATOR;
-				
-			}
-			printAr($name);
-			printAr($paths);
-			*/
 			$include = objectCreater::add_include_path( $name, $paths );
 			require $include;
 		}
@@ -51,16 +42,15 @@
 		    	
 		    	
 		    	
-		        if ( file_exists($fullPath = $path.$name.DIRECTORY_SEPARATOR.$name.objectCreater::$extension)/* OR (file_exists($path) && filetype($path) !== 'dir') */ ){
+		        if ( file_exists($fullPath = $path.$name.DIRECTORY_SEPARATOR.$name.objectCreater::$extension) ){
 		        	//echo $fullPath."<br />";
 		        	//echo $path;
 					set_include_path(get_include_path() . PATH_SEPARATOR . $path.$name.DIRECTORY_SEPARATOR);
-		        	return $path.DIRECTORY_SEPARATOR.$name.DIRECTORY_SEPARATOR.$name.objectCreater::$extension;
+		        	return $fullPath;
 		        }
 		       
-		    	if ( file_exists($fullPath = $path.$name.objectCreater::$extension)/* OR (file_exists($path) && filetype($path) !== 'dir') */ ){
-		        	//echo $fullPath."<br />";
-		        	return $path.$name.objectCreater::$extension;
+		    	if ( file_exists($fullPath = $path.$name.objectCreater::$extension) ){
+		        	return $fullPath;
 		        }
 		        
 		        
