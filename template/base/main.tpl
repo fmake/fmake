@@ -4,7 +4,6 @@
 	<!-- PAGE -->
 	<div id="page">
 		<div class="p-inner">
-
 			<!-- HEADER -->
 			<div id="head">
 				<!-- logo -->

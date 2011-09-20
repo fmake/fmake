@@ -1,7 +1,5 @@
 <?
-
 header('Content-type: text/html; charset=utf-8'); 
-
 setlocale(LC_ALL, 'ru_RU.UTF-8');
 mb_internal_encoding('UTF-8');
 
@@ -9,19 +7,11 @@ ini_set('display_errors',1);
 error_reporting(7);
 session_start();
 
-require('./libs/FController.php');
+require('./fmake/FController.php');
 
-require './libs/login.php';
-require './libs/function_xajax.php';
 
 $fmakeFilmStar = new fmakeFilms_star();
 
-//echo($fmakeFilmStar->getSummStarFilm(1));
-
-
-//printAr($_REQUEST);
-#if($request->getEscape('id') && $request->getEscape('url'))
-#$_REQUEST['modul'] = 'kino';
 
 //К нам заходят по фразам
 $search = new SearchSystem();
@@ -34,41 +24,19 @@ if($array_search){
 	$search->newItem();
 }
 $search_query = $search->getItems();
-/*foreach($search_query as $q){
-	$search_q[$q['search_num']][] = $q;
-}*/
 
-//$google_mail = $search->getItems(1,1);
-//$yandex_mail = $search->getItems(2,1);
-//$globalTemplateParam->set('search_mail',$search_mail);
-//$globalTemplateParam->set('search_google',$google_mail);
 $globalTemplateParam->set('search_query',$search_query);
-//---------------------------
 
 $modul = new fmakeSiteModule();
 
-//printAr($_REQUEST);
 
 $modul->getPage($request -> getEscape('modul') ,$twig);
-//echo $modul->id;
-
-//printAr($modul);
-
-///////// возвращает true или false можно войти на эту страницу или нет
-//printAr( $modul -> isAccesable($twig, $modul->id,$user->role) ); 
-//
-
-//printAr($_SERVER['REQUEST_URI']);
-//echo($modul->id);
-//$modul -> isAccesable ($twig, $modul->id,$user->role);
-//echo($modul->id);
-//$modul -> isAccesable ($twig, $request->id,$user->role);
 
 $globalTemplateParam->set('modul',$modul);
 
 //добавляем каталог к основным модулям
 $menu = $modul->getAllForMenu(0, true,$q=false,$flag=true,true);
-//printAr($menu);
+
 $globalTemplateParam->set('menu',$menu);	
 
 //жанры
