@@ -1,8 +1,15 @@
 <?php
-
+/**
+ * 
+ * @author n1k
+ * создание объектов во все системе
+ *
+ */
 	class objectCreater{
 		static $startPathSearcher = 1;
 		static $endPathSearcher = 1;
+		static $extension = ".php";
+		
 		
 		static function setDirPaths(){
 			set_include_path(
@@ -27,31 +34,36 @@
 			//заменяем _ на / для того что бы загрузить вспомогательные классы в папке
 			$name = str_replace('_', '/', $name);
 			//бежимся только по раннее установленным путям
-			for( $i=objectCreater::$startPathSearcher; $i <= objectCreater::$endPathSearcher;$i++){
+			/*for( $i=objectCreater::$startPathSearcher; $i <= objectCreater::$endPathSearcher;$i++){
 				//добавляем путь для класса
-				$paths[$i] .= $name.DIRECTORY_SEPARATOR;
+				//$paths[$i] .= $name.DIRECTORY_SEPARATOR;
 				
 			}
-			
-			objectCreater::add_include_path($paths);
-			require $name . ".php";
+			printAr($name);
+			printAr($paths);
+			*/
+			$include = objectCreater::add_include_path( $name, $paths );
+			require $include;
 		}
 		
-		static function add_include_path ($paths){
-		    foreach ($paths AS $path)
-		    {
-		        if ( !file_exists($path) OR (file_exists($path) && filetype($path) !== 'dir') )
-		        {
-		            //trigger_error("Include path '{$path}' not exists", E_USER_WARNING);
-		            continue;
+		static function add_include_path ($name, $paths){
+		    foreach ($paths AS $path){
+		    	
+		    	
+		    	
+		        if ( file_exists($fullPath = $path.$name.DIRECTORY_SEPARATOR.$name.objectCreater::$extension)/* OR (file_exists($path) && filetype($path) !== 'dir') */ ){
+		        	//echo $fullPath."<br />";
+		        	//echo $path;
+					set_include_path(get_include_path() . PATH_SEPARATOR . $path.$name.DIRECTORY_SEPARATOR);
+		        	return $path.DIRECTORY_SEPARATOR.$name.DIRECTORY_SEPARATOR.$name.objectCreater::$extension;
 		        }
 		       
-		        $paths = explode(PATH_SEPARATOR, get_include_path());
-		       
-		        if (array_search($path, $paths) === false)
-		            array_push($paths, $path);
-		       
-		        set_include_path(implode(PATH_SEPARATOR, $paths));
+		    	if ( file_exists($fullPath = $path.$name.objectCreater::$extension)/* OR (file_exists($path) && filetype($path) !== 'dir') */ ){
+		        	//echo $fullPath."<br />";
+		        	return $path.$name.objectCreater::$extension;
+		        }
+		        
+		        
 		    }
 		}
 	
