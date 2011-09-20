@@ -1,0 +1,123 @@
+
+/* Фоновый слой */
+.background {
+	float: left;
+	width: 100%;
+	background: url("/images/bg.jpg") repeat left top;
+}
+.background-z1 {
+	float: left;
+	width: 100%;
+	background: url("/images/bg-repeat.jpg") repeat-y center top;
+}
+.background-z2 {
+	float: left;
+	width: 100%;
+	background: url("/images/bg-top.jpg") no-repeat center top;
+}
+.background-z3 {
+	float: left;
+	width: 100%;
+	background: url("/images/bg-bottom.jpg") no-repeat center bottom;
+}
+
+
+/* Рабочая область - весь сайт */
+.workspace {
+	margin: 0 auto;
+	width: 1010px;
+	height: auto;
+	text-align: left;
+}
+.workspace-z1 {
+	tmargin-left: 20px;
+	width: 1010px;
+}
+
+
+/* Шапка */
+.head {
+	float: left;
+	width: 1010px;
+	height: 160px;
+	tbackground: url("/images/header.jpg") no-repeat left top;
+	padding: 0 10px;
+}
+
+.head0 {
+	float: left;
+	width: 990px;
+	height: 0px;
+}
+.head1 {
+	float: left;
+	width: 990px;
+	height: 96px;
+}
+
+.head2 {
+	float: left;
+	width: 990px;
+	height: 44px;
+}
+
+.headlink {
+	display: block;
+	position: relative;
+	float: left;
+	left: -10px;
+	top: 50px;
+	width: 180px;
+	height: 70px;
+	text-decoration: none;
+}
+
+
+/* Содержимое сайта (блоки, сайдбары) */
+.allcontent {
+	float: left;
+	width: 1010px;
+	overflow: hidden;
+	tmargin-top: 8px;
+	tbackground: #FFFFFF url("/images/footer.jpg") no-repeat left bottom;
+	tpadding-top: 8px;
+}
+.allcontent-z1{
+	width: 990px;
+	margin-left: 10px;
+}
+
+.isc {
+	float: left;
+	width: 990px;
+}
+
+/* Подвал */
+.footer {
+	float: left;
+	width: 990px;
+	height: 60px;
+}
+.footer a {
+	color: #000;
+}
+.footer p {
+	font-size: 12px;
+	color: #000;
+}
+
+.footer .tdcopyright {
+	width: 300px;
+	height: 62px;
+	text-align: left;
+}
+.footer .tdmenu {
+	width: 600px;
+	height: 62px;
+	text-align: left;
+}
+.footer .tdcounter {
+	width: 90px;
+	height: 62px;
+	text-align: right;
+}

@@ -1,0 +1,256 @@
+
+/*
+	Главная - разметка
+*/
+
+.hr {
+	float: left;
+	width: 990px;
+	height: 20px;
+}
+
+.a_more {
+	padding-bottom: 1px;
+	color: #C85151;
+	text-decoration: none;
+	border-bottom: 1px dotted;
+}
+.a_more:hover {
+	border-bottom: 0;
+}
+
+.hadsense728{
+	float: left;
+	margin: 5px 0 0 5px;
+	width: 728px;
+	height: 90px;
+	tbackground: url("/images/adsense728.gif") no-repeat left top;
+}
+.adsense728{
+	float: left;
+	margin-bottom: 8px;
+	width: 728px;
+	height: 90px;
+	tbackground: url("/images/adsense728.gif") no-repeat left top;
+}
+
+
+/* Листалка */
+.dcg {
+	float: left;
+	width: 480px;
+	height: 300px;
+	background: #eee url("/images/gallery_1.jpg") no-repeat left top;
+	margin-bottom: 2px;
+}
+
+
+
+/* Блок */
+
+.hblock {
+	float: left;
+	background: url("/images/img03.png") repeat-x left top;
+}
+.hblock-z1 { background: url("/images/img01.png") no-repeat left top; }
+.hblock-z2 { background: url("/images/img02.png") no-repeat right top; }
+
+.hblock .block-header  {
+	tpadding: 5px 4px 5px 0px;
+	height: 22px;
+	tborder: 1px solid #F4D0DE;
+	tborder-bottom: 1px solid #A72456;
+	tbackground: #FEF5F8;
+}
+.hblock .block-header h2 {
+	margin: 0;
+	padding: 1px 7px 0 7px;
+	line-height: 20px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #fff;
+}
+
+.hblock .block-content { float: left; padding: 0px 2px; }
+
+.hblock .hformat {
+	float: left;
+	color: #000;
+}
+.hblock .hformat .widget-content {
+	padding: 2px 4px;
+	font-size: 12px;
+}
+.hblock .hformat h3 a {
+	color: #313131;
+	font-size: 13px;
+	font-weight: normal;
+	text-decoration: underline;
+}
+.hblock .hformat .widget-content span, .hblock .hformat .widget-content span a {
+	font-size: 11px;
+	color: #222;
+}
+
+/* Несуществующая колонка */
+.hblock0 {
+	margin: 0px 0px 0px 10px;
+	width: 180px;
+}
+.hblock0 .hformat {
+	margin: 2px 0px;
+	padding-bottom: 3px;
+	width: 180px;
+	border-bottom: 1px dotted #491E59;
+}
+.hblock0 .hformat .widget-content {
+	padding: 0;
+}
+
+
+/* 1х3 превью */
+.hblock1 {
+	margin: 0px 10px 0px 0px;
+	width: 240px;
+}
+.hblock1 .hformat {
+	margin: 3px 0px;
+	padding-bottom: 0px;
+	tborder-bottom: 1px dotted #E3727F;
+	width: 240px;
+}
+.hblock1 .hformat .widget-content {
+	padding: 0;
+}
+
+
+/* Adsense 728x90 */
+.hblock2 {
+	margin: 1px 0 6px 0;
+	width: 730px;
+	height: 90px;
+	background: url("/images/adsense728.gif") no-repeat center top;
+}
+.hblock2 .block-content {
+	padding: 0px 1px;
+}
+
+/* Листалка */
+.hblock2-2 {
+	margin: 0px 0 10px 0;
+	width: 480px;
+	height: 322px;
+	tbackground: url("/images/adsense728.gif") no-repeat center top;
+}
+.hblock2-2 .block-content {
+	padding: 4px 0px 0 0px;
+}
+
+
+/* 3x2 превью */
+.hblock3 {
+	margin: 0px 0px 0px 0px;
+	width: 730px;
+}
+.hblock3 .hformat {
+	margin: 2px 0px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	width: 243px;
+}
+.hblock3 .hformat .widget-content {
+	padding: 0;
+}
+
+
+/* 4x1 превью */
+.hblock4 {
+	margin: 0px 0px 4px 0px;
+	width: 730px;
+}
+.hblock4 .hformat {
+	margin: 2px 0px;
+	tpadding-right: 3px;
+	tpadding-bottom: 3px;
+	width: 181px;
+}
+.hblock4 .hformat .widget-content {
+	padding: 0;
+}
+
+
+/* 5x1 превью */
+.hblock42 {
+	margin: 4px 0px 4px 0px;
+	width: 730px;
+}
+.hblock42 .hformat {
+	margin: 2px 0px;
+	tpadding-right: 3px;
+	tpadding-bottom: 3px;
+	width: 181px;
+}
+.hblock42 .hformat .widget-content {
+	padding: 0;
+}
+
+
+/* 1x2 превью */
+.hblock5 {
+	margin: 0px 10px 4px 0px;
+	width: 360px;
+}
+.hblock5 .hformat {
+	margin: 2px 0px;
+	tpadding-right: 3px;
+	tpadding-bottom: 3px;
+	width: 360px;
+}
+.hblock5 .hformat .widget-content {
+	padding: 0;
+}
+
+
+/* Превью видеогалереи */
+.hblock7 {
+	float: left;
+	margin: 4px 0 9px 0;
+	width: 535px;
+	background: #F5ECF9;
+	border: 1px solid #BB80D5;
+	padding-left: 3px;
+}
+.hblock7-z1 { tfloat: left; tbackground: url("/images/images_19.jpg") no-repeat left top; }
+.hblock7-z2 { }
+
+.hblock7 .block-content { padding: 0px 2px; }
+
+.hblock7 .hformat  { float: left; width: 173px; margin: 4px 0px 6px 4px; }
+
+.hblock7 .hformat  .widget-header  {  }
+.hblock7 .hformat  .widget-header h3 a { color: #55226D; font-size: 13px; font-weight: normal; }
+.hblock7 .hformat  .widget-header span, .hblock7 .hformat  .widget-header span a { font-size: 11px; color: #7C4E90; }
+
+.hblock7 .hformat  .widget-footer  {  }
+.hblock7 .hformat  .widget-footer span, .hblock7 .hformat  .widget-footer span a { font-size: 11px; color: #7C4E90; }
+
+.hblock7 .hformat  .widget-content { padding: 6px 0; }
+
+
+/* Внутренняя страница - разметка */
+
+.icontent {
+	float: left;
+	tmargin-top: 10px;
+	width: 730px;
+}
+.icontent-z1 {
+	width: 730px;
+}
+
+
+.isidebar {
+	float: left;
+	margin-left: 10px;
+	width: 250px;
+}

@@ -1,0 +1,139 @@
+
+/* Область меню */
+
+.bmenu {
+	width: 990px;
+	height: 44px;
+	z-index: 900;
+}
+.bmenu-z1 {
+	position: relative;
+	margin-left: 250px;
+	width: 740px;
+	height: 44px;
+	z-index: 910;
+}
+
+/* Элемент меню */
+
+ul#menu-main {
+	tfloat: right;
+}
+
+ul#menu-main li {
+	float: left;
+	twidth: 105px;
+	height: 44px;
+	list-style: none;
+	text-align: center;
+}
+
+/* Последняя ссылка в меню */
+ul#menu-main li.menu-item-2846 { background: none; }
+
+ul#menu-main li a {
+	display: block;
+	padding-left: 26px;
+	padding-right: 4px;
+	twidth: 105px;
+	height: 44px;
+	line-height: 44px;
+	font-size: 14px;
+	font-weight: normal;
+	text-decoration: none;
+	color: #fff;
+}
+ul#menu-main li a:hover {
+	text-decoration: underline;
+	color: #ddd;
+}
+#menu-main li.current-menu-item, #menu-main li.current-post-ancestor, #menu-main li.current-category-ancestor, #menu-main li.current-menu-parent, #menu-main li.current-post-parent {}
+
+#menu-main li.current-menu-item a, #menu-main li.current-post-ancestor a, #menu-main li.current-category-ancestor a, #menu-main li.current-menu-parent a, #menu-main li.current-post-parent a { color: #fff; text-decoration: underline; }
+
+#menu-main li.current-menu-item a:hover, #menu-main li.current-post-ancestor a:hover, #menu-main li.current-category-ancestor a:hover, #menu-main li.current-menu-parent a:hover, #menu-main li.current-post-parent a:hover { color: #ddd; }
+
+
+/* Меню в футере */
+ul#menu-main-1 {
+	tmargin-left: -12px;
+}
+ul#menu-main-1 li {
+	float: left;
+	position: relative;
+	theight: 45px;
+	list-style: none;
+	text-align: center;
+}
+
+ul#menu-main-1 li a {
+	display: block;
+	padding: 0 8px;
+	theight: 45px;
+	tline-height: 45px;
+	font-size: 12px;
+	font-weight: normal;
+	text-decoration: none;
+	color: #000;
+}
+ul#menu-main-1 li a:hover {
+	text-decoration: underline;
+	color: #222;
+}
+
+/* Список рубрик */
+#menu-articles-cats {
+	margin-top: 0px;
+	margin-left: 16px;
+}
+#menu-articles-cats li {
+	tfloat: left;
+	tdisplay: inline;
+	
+	margin: 0;
+	margin-left: 13px;
+	padding: 0;
+	
+	font-size: 15px;
+	
+	tline-height: 26px;
+	theight: 26px;
+	
+	tlist-style-image: url("/images/img02.jpg");
+	
+	tlist-style-type: square;
+	color: #421F51;
+	
+	background: url("/images/img03.jpg") repeat-x bottom left;
+}
+#menu-articles-cats li a {
+	margin: 0;
+	margin-left: 5px;
+	padding: 0;
+	line-height: 28px;
+	theight: 36px;
+	font-size: 15px;
+	text-decoration: none;
+	color: #000;
+}
+
+
+/* Каталог */
+
+#menu-catalog-cats li {
+	line-height: 24px;
+	height: 24px;
+}
+
+/* Форма логина */
+
+.loginblock {
+	display: block;
+	position: relative;
+	float: right;
+	padding: 8px 20px 0 0;
+}
+.loginblock span, .loginblock a {
+	font-size: 12px;
+	color: #000;
+}

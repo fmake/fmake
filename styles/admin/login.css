@@ -1,0 +1,29 @@
+.bodylogin
+	{background: #F8F4E6;}
+#login
+	{background: url("/images/admin/login-bg.gif");width: 397px;height: 247px;margin: 170px auto 0 auto;}
+#login table
+	{margin: 97px 0 0 37px;position: absolute;}	
+#login table TD
+	{padding: 6px 0;vertical-align: middle;}
+#login table TD.f-td	
+	{width: 60px;}	
+#login table input.text
+	{height: 20px;width: 248px;border: 1px solid #797979;}
+
+#login label
+	{cursor: pointer;}
+
+	
+#pass
+	{background: url("/images/admin/pas-bg.gif");width: 396px;height: 251px;margin: 170px auto 0 auto;}
+#pass h1
+	{position: absolute;margin: 10px 0 0 20px;}	
+#pass table
+	{margin: 97px 0 0 37px;position: absolute;}
+#pass table TD
+	{padding: 6px 0;vertical-align: middle;}	
+#pass table TD.f-td	
+	{width: 130px;}		
+#pass table input.text
+	{height: 20px;width: 188px;border: 1px solid #797979;}	

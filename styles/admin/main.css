@@ -1,0 +1,80 @@
+/* ----- import styles ----- */
+@import url("header.css"); 
+@import url("content.css"); 
+@import url("footer.css"); 
+@import url("btn.css");
+
+/* -------------------- reset defaults -------------------- */
+* { margin: 0; padding: 0; }
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, em, img, strong, sub, sup, strong, em, ins, dl, dt, dd, ol, ul, li, form, label, table, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; border-width: 0; outline: 0; vertical-align: baseline; background: transparent; }
+html, body { width: 100%; height: 100%; }
+body { font: 12px/18px Arial, Tahoma, sans-serif; color: #000000; background:  no-repeat #f8f4e6; text-align: left; }
+table { border-collapse: collapse; border-spacing: 0; border-width: 0; }
+caption, td, th { vertical-align: top; }
+dl, ul, ol { margin: 0; padding: 0; list-style: none; }
+img { border: 0; border-width: 0; vertical-align: top; }
+
+ins { text-decoration: underline; }
+del { text-decoration: line-through; }
+strong { font-weight: bold; }
+em { font-style: italic; }
+i { font-style: normal; }
+
+input, button { overflow: visible; }
+input, button, select { vertical-align: middle; }
+textarea { vertical-align: top; height: 72px; font: 12px/14px 'Arial'; color: #555; padding: 1px 2px; border-width: 1px; }
+select { font: 12px/18px 'Arial'; color: #555; border-width: 1px;padding: 2px; }
+select option { font: 12px/18px 'Arial'; color: #555; }
+input.text { font: 12px/14px 'Arial'; color: #555; padding: 1px 2px; border-width: 1px; }
+input.radio { }
+input.checkbox { }
+input.file { width: 100%; height: 22px; }
+
+blockquote { quotes: none; }
+blockquote:before, blockquote:after { content: ""; }
+q { quotes: '\00AB' '\00BB' '\201E' '\201C'; }
+q:before { content: '\00AB'; }
+q:after { content: '\00BB'; }
+q q:before { content: '\201E'; }
+q q:after { content: '\201C'; }
+
+/* ----- global ----- */
+a { color: #0e7ca8; text-decoration: underline; font: 12px 'Trebuchet MS';}
+a:hover, a:active { color: #7eaf46; text-decoration: none;}
+h1 { font: 18px/26px 'Arial'; color: #231f20;margin: 0 0 10px 0; }
+h2 { font: 16px/20px 'Arial'; color: #231f20;margin: 2px 0; }
+h3 { font: 14px/20px 'Arial'; color: #231f20;font-style:italic ;}
+
+label
+	{cursor: pointer;}
+
+.f9{font-size: 9px;}
+.f12{font-size: 12px;}
+.f13{font-size: 14px;}
+.f14{font-size: 14px;}
+.m4{margin: 4px;}
+
+.f_r{float: right;display: block;position: relative;}
+
+.submit {padding: 2px 10px;margin: -1px 0 0 0;font-size:107%;height:30px;-webkit-appearance:button;}
+/* ----- clear ----- */
+.cl { clear: both; height: 0; overflow: hidden; }
+.clf:after { content: ""; display: block; clear: both; visibility: hidden; height: 0; overflow: hidden; }
+.nobg { background: none !important; }
+.nobd { border: 0 !important; }
+.nom { margin: 0 !important; }
+.mop { padding: 0 !important; }
+.mopt { padding-top: 0 !important; }
+
+.f_rt
+	{float: right;}
+.f_lt
+	{float: left;}
+/*--------------COLOR----------------------*/
+.grey{color:#494949;}
+.white{color: #ffffff;}
+.black{color:#000;}
+/*--------------FONT----------------------*/
+/* -------------------- MAIN -------------------- */
+.page { width: 100%; min-width: 996px; min-height: 100%;  overflow: hidden; position: relative; z-index: 1; }
+.p-inner { width: 100%; min-width: 996px; margin: 0 auto; position: relative; z-index: 7 }
