@@ -39,12 +39,8 @@
 		
 		static function add_include_path ($name, $paths){
 		    foreach ($paths AS $path){
-		    	
-		    	
-		    	
+
 		        if ( file_exists($fullPath = $path.$name.DIRECTORY_SEPARATOR.$name.objectCreater::$extension) ){
-		        	//echo $fullPath."<br />";
-		        	//echo $path;
 					set_include_path(get_include_path() . PATH_SEPARATOR . $path.$name.DIRECTORY_SEPARATOR);
 		        	return $fullPath;
 		        }

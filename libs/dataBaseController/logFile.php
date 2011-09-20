@@ -1,77 +1,86 @@
 <?php
+/**
+ * 
+ * @author n1k
+ * лог запросов в базу данных
+ */
 class dataBaseController_logFile {
-	private $data = array();
+	private $data = false;
 	private $fhandle = 0;
 	private $filename = "";
+	private $startFileContent = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">";
+	/**
+	 * Включать запись в файл
+	 * @var unknown_type
+	 */
+	private $logging = true;
 	
-	function __construct($output_filename="")
+	
+	function __construct($output_filename="", $logging = true)
 	{
 		if (!$output_filename)
 			return;
 		$this->filename = $output_filename;
-		//chmod($output_filename, octdec('755'));
-		$this->fhandle = @fopen($output_filename, "w");
-		if (!$this->fhandle)
-			throw new Exception("невозможно создать файл <i>$output_filename</i>");
+		
+		if($logging){
+			$this->fhandle = @fopen($output_filename, "w");
+			if (!$this->fhandle)
+				throw new Exception("невозможно создать файл <i>$output_filename</i>");
+	
+			$this -> writeToFile( $this ->startFileContent );
+		}
 	}
 	
-	function __destruct()
-	{
+	function __destruct(){
 		if (!$this->fhandle)
 			return;
-		fwrite($this->fhandle, $this->getTextData());
 		fclose($this->fhandle);
+	}
+	
+	function writeToFile($data){
+		if (!$this->fhandle)
+			return;
+		fwrite($this->fhandle, $data);
+	}
+	
+	function logOff(){
+		$this -> logging = false;
 	}
 	
 	function add($data, $status="note")
 	{
+		if(!$this -> logging) return;
 		switch ($status)
 		{
 			case "note":
-				$this->data[] = "<span style=\"color: #000; font-weight: normal;\">" . $data . "</span>";
+				$this->data = "<span style=\"color: #000; font-weight: normal;\">" . $data . "</span>";
 			break;
 			case "comment":
-				$this->data[] = "<span style=\"color: #777; font-weight: normal;\">" . $data . "</span>";
+				$this->data = "<span style=\"color: #777; font-weight: normal;\">" . $data . "</span>";
 			break;
 			case "error":
-				$this->data[] = "<span style=\"color: #f00; font-weight: normal;\">" . $data . "</span>";
+				$this->data = "<span style=\"color: #f00; font-weight: normal;\">" . $data . "</span>";
 			break;
 			case "constructor":
-				$this->data[] = "<span style=\"color: #000; font-weight: bold;\">" . $data . "</span>";
+				$this->data = "<span style=\"color: #000; font-weight: bold;\">" . $data . "</span>";
 			break;
 			case "highlight":
-				$this->data[] = "<span style=\"color: #35f; font-weight: normal;\">" . $data . "</span>";
+				$this->data = "<span style=\"color: #35f; font-weight: normal;\">" . $data . "</span>";
 			break;
 			default:
-				$this->data[] = $data;
+				$this->data = $data;
 			break;
 		}
-		return 1;
+		$this ->writeToFile($this -> getTextDataFormat ($data) );
 	}
 	
-	// Синоним для add()
-	function insert($data, $status="note")
-	{
-		return $this->add($data, $status);
+	
+	
+	function getTextDataFormat($data){
+		
+		return "<p OnMouseOver=\"this.style.background='#eee';\" OnMouseOut=\"this.style.background='#fff';\">$data</p>\n";
+		
 	}
 	
-	function getData()
-	{
-		return $this->data;
-	}
-	
-	function getTextData()
-	{
-		$d = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">";
-		foreach ($this->data as $data)
-		{
-			$d .= "<p OnMouseOver=\"this.style.background='#eee';\" OnMouseOut=\"this.style.background='#fff';\">$data</p>\n";
-		}
-		return $d;
-	}
-	
-	function show()
-	{
-		print $this->getTextData();
-	}
+
 }

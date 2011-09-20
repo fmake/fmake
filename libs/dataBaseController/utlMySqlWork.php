@@ -22,7 +22,12 @@ class utlMySqlWork
 	private $Connection_id = null;
 	private $CurrentResult = null;
 	private $DoNotFreeResult = null;
-
+	/**
+	 * 
+	 * @var dataBaseController_logFile
+	 */
+	private $log;
+	
 	function __construct($FileName,$db_user_name,$db_user_pas,$db_name,$db_host_name,$db_port,$db_crarset,$pr_name ) // ����������� ������
 	{
 		$this->UserName = $db_user_name;
@@ -33,6 +38,10 @@ class utlMySqlWork
 		$this->DbCharSet = $db_crarset;
 		$this->ProjectName = $pr_name;
 		$this->SelfName=$FileName;
+	}
+	
+	function addLog(dataBaseController_logFile $log){
+		$this -> log = $log;
 	}
 	
 	function checkError($ss,$errLine) // �������� �� ������
@@ -56,9 +65,8 @@ class utlMySqlWork
 
 	function query($ss,$Line) // ������ � ����
 	{
-		global $log;
-		$log->add("$ss");
-//		echo $ss."<br />";
+
+		$this -> log -> add($ss);
 
 		if($this->CurrentResult>1){ if(!$this->DoNotFreeResult){ mysql_free_result($this->CurrentResult); }}
 		$this->CurrentResult=mysql_db_query($this->DatabaseName,$ss,$this->Connection_id);

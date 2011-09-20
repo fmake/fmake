@@ -1,35 +1,22 @@
 <?php 
 	require 'configs.php';
+	require 'db_config.php';
+
+	//загружаем шаблонизатор	
+	$loader = new Twig_Loader_Filesystem(ROOT.'/template');
+	$twig = new Twig_Environment($loader,array('auto_reload' => true ,'cache' => ROOT.'/template/cache', 'debug' => false));
+	$lexer = new Twig_Lexer($twig, array('tag_comment' => array('/*', '*/'),'tag_block'  => array('[[', ']]'),'tag_variable' => array('{', '}'),));
+	$twig->setLexer($lexer);
+	$twig->addExtension(new Twig_Project_Extension());
 	
-	//коннект с базе данных
-	$dataBase = new dataBaseController(
-						$_SERVER["PHP_SELF"],
-						"root",//пользователь
-						"sqlroot",//пароль
-						"onlite",//имя базы
-						"localhost",//сервер
-						"",
-						"utf8",//кодировка
-						"pr"//кодировка
-					);
-	$log = new dataBaseController_logFile(ROOT."/template/cache/sql.html");				
-					
-/*
-$dataBase = new dataBaseController(
-				$_SERVER["PHP_SELF"],
-				"root",//пользователь
-				"",//пароль
-				"mycms",//имя базы
-				"localhost",//сервер
-				"",
-				"utf8",//кодировка
-				"pr"//кодировка
-			);
-*/
+	// лог запросов
+	$log = new dataBaseController_logFile(ROOT."/template/cache/sql.html", false);	
+	$dataBase -> addLog($log);			
+	// делаем коннект к базе данных
 	$dataBase->connect(__LINE__);
-	
+	 
 	$hostname = str_replace("www.", "", $_SERVER['HTTP_HOST']);
-	$request_url = $_SERVER['REQUEST_URI'];
+
 	//обработчик информации из вне, get, post
 	$request = new requestController();
 	
@@ -39,21 +26,15 @@ $dataBase = new dataBaseController(
 	}
 	//обработчик сессии
 	$session = new sessionController();
-	
+	//создаем класс глобальных параметров
+	$configs = new globalConfigs();
 	
 	//глобальные переменные для шаблона
 	$globalTemplateParam = new templateController_templateParam();
-	//$globalTemplateParam->set('world',$world);
 	$globalTemplateParam->set('request', $request);
 	$globalTemplateParam->set('hostname', $hostname);
 	$globalTemplateParam->set('request_url', $request_url);
-	//создаем класс глобальных параметров
-	$configs = new globalConfigs();
 	$globalTemplateParam->set('configs',$configs);
-	//echo $configs->email;
-
-	//$helper = new Tester_helper();
 	
-	//call_user_func(array('Tester', 'helloworld'), "qq",$array);
-	//{$Tester->getItems(3,$arr,$sile);}
+
 ?>
