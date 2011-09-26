@@ -1,7 +1,7 @@
 <?php 
 	require 'configs.php';
 	
- 
+    
 	//загружаем шаблонизатор	
 	$loader = new Twig_Loader_Filesystem(ROOT.'/template');
 	$twig = new Twig_Environment($loader,array('auto_reload' => true ,'cache' => ROOT.'/template/cache', 'debug' => false));
