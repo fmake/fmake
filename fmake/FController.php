@@ -1,7 +1,7 @@
 <?php 
 	require 'configs.php';
-	require 'db_config.php';
-
+	
+ 
 	//загружаем шаблонизатор	
 	$loader = new Twig_Loader_Filesystem(ROOT.'/template');
 	$twig = new Twig_Environment($loader,array('auto_reload' => true ,'cache' => ROOT.'/template/cache', 'debug' => false));
@@ -9,6 +9,7 @@
 	$twig->setLexer($lexer);
 	$twig->addExtension(new Twig_Project_Extension());
 	
+	require 'db_config.php';
 	// лог запросов
 	$log = new dataBaseController_logFile(ROOT."/template/cache/sql.html", false);	
 	$dataBase -> addLog($log);			
