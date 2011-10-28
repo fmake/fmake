@@ -15,7 +15,6 @@ class globalConfigs extends fmakeCore{
 	
 	
 	function udateByValue($key,$value){
-		//echo $key."  ".$value; 
 		$item = $this->getByParam($key,false);
 		$this->id = $item['id'];
 		$this->addParam("param",$key);
