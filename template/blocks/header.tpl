@@ -19,9 +19,4 @@
 	<script language="javascript" type="text/javascript" src="/js/jquery.rating.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/jquery.rating.css">
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-	[[if xajax]]
-		[[phpcode`
-			$context['xajax']->printJavascript();
-		`]]
-	[[endif]]
 </head>

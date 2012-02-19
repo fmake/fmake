@@ -7,8 +7,8 @@
 	$dataBase = new dataBaseController(
 						$_SERVER["PHP_SELF"],
 						"root",//пользователь
-						"sqlroot",//пароль
-						"onlite",//имя базы 
+						"",//пароль
+						"fmake",//имя базы 
 						"localhost",//сервер
 						"",
 						"utf8",//кодировка

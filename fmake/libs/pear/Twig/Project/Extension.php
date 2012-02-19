@@ -5,12 +5,12 @@
 class Twig_Project_Extension extends Twig_Extension
 	{
 		
-	static function callObj($vars,$string)
+	function callObj($vars,$string,$a)
 	{
-		global $twig;
-		$template = $twig->loadTemplate('news/item.tpl');
-		echo $template->render(array());
+		printAr( func_get_args() );
+		
 	  	return true;
+	  	
 	}	
 		
 	static function addGlobals($twig,$value,$name){
@@ -57,7 +57,7 @@ class Twig_Project_Extension extends Twig_Extension
 	  
 	public function getFilters(){
 		return array(
-			'callObj' => new Twig_Filter_Method($this, 'callObj',array('needs_environment' => true)),
+			//'callObj' => new Twig_Filter_Method($this, 'callObj',array('needs_environment' => true)),
 			'addGlobals' => new Twig_Filter_Method($this, 'twig_addGlobals',array('needs_environment' => true)),
 			'getGlobals' => new Twig_Filter_Method($this, 'getGlobals',array('needs_environment' => true)),
 		);
@@ -67,6 +67,7 @@ class Twig_Project_Extension extends Twig_Extension
     {
 		return array(
 			'df' => new Twig_Filter_Method($this, 'standartFunction'),
+			'callObj' => new Twig_Filter_Method($this, 'callObj'),
 			'compile' => new Twig_Filter_Method($this, 'compileFunction',array('needs_environment' => true))
 		);
     }
