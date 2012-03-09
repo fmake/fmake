@@ -1,2 +1,2 @@
 <?php
-echo "php";
+echo "php install module";

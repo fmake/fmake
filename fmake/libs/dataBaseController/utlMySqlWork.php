@@ -1,6 +1,5 @@
 <?php
 
-// ���������� ��� ������ ��������� �� ������ � ���������� ���������� �������
 function errorExit()
 {
  echo "</td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table>\n";
@@ -28,7 +27,7 @@ class utlMySqlWork
 	 */
 	private $log;
 	
-	function __construct($FileName,$db_user_name,$db_user_pas,$db_name,$db_host_name,$db_port,$db_crarset,$pr_name ) // ����������� ������
+	function __construct($FileName,$db_user_name,$db_user_pas,$db_name,$db_host_name,$db_port,$db_crarset,$pr_name )
 	{
 		$this->UserName = $db_user_name;
 		$this->Password = $db_user_pas;
@@ -53,10 +52,15 @@ class utlMySqlWork
 			ErrorExit();
 		}                     
 	}
-	
-	function connect($Line) // ������� � ����
+	/**
+	 * 
+	 * Соеединение к базе данных
+	 * @param $Line
+	 * @param $new_link bool если второе соединение к базе данных то необходимо указывать true
+	 */
+	function connect($Line,$new_link = false) 
 	{  
-		$this->Connection_id = mysql_connect($this->HostName.":".$this->Port,$this->UserName,$this->Password);
+		$this->Connection_id = mysql_connect($this->HostName.":".$this->Port,$this->UserName,$this->Password,$new_link);
 		$this->checkError("Connect to ".$this->HostName,$Line);
 		//$this->query("SET CHARACTER SET ".$this->DbCharSet,$Line);
 		$this->query("SET NAMES ".$this->DbCharSet,$Line);
@@ -64,13 +68,12 @@ class utlMySqlWork
 		$this->checkError("Select ".$this->DatabaseName,$Line);
 	}
 
-	function query($ss,$Line) // ������ � ����
+	function query($ss,$Line) 
 	{
-
-		$this -> log -> add($ss);
+		if($this -> log)
+			$this -> log -> add($ss);
 
 		if($this->CurrentResult>1){ if(!$this->DoNotFreeResult){ mysql_free_result($this->CurrentResult); }}
-		//$this->CurrentResult=mysql_db_query($this->DatabaseName,$ss,$this->Connection_id);
 		$this->CurrentResult=mysql_query($ss,$this->Connection_id);
 		$this->checkError($ss,$Line);
 		return $this->CurrentResult;

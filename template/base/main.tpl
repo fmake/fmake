@@ -38,10 +38,9 @@
 					<!-- CENTER -->
 					
 					<div id="center" >
-						{df('sizeof','1')}
-						[[get patern.test(6127137)]] 
-						{name}
-						qqqqqqqqqqqqqq
+						
+						[[get patern.test('/news/news.tpl')]] 
+						
 					</div><!-- CENTER -->
 					
 	

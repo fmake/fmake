@@ -21,8 +21,7 @@ class fmakeSiteModule extends fmakeCore{
   	}
 	
 	function __get($nm){
-		return $this->params[$nm];
-		
+		return $this->__isset($nm) ? $this->params[$nm] : false;
 	}
 
 	
@@ -32,26 +31,19 @@ class fmakeSiteModule extends fmakeCore{
 		$this->id = $result[0]['id'];
 	}	
 	
-	function getChilds ($id = null, $active = false, $inmenu = false,$type = false){
+	function getChilds ($id = null, $active = false, $inmenu = false){
 		//echo('childs '.$type.'<br/>');
 		if($id === null)
 			$id = $this->id;
 
-		$select = $this->dataBase->SelectFromDB(_LINE_);
+		$select = $this->dataBase->SelectFromDB(__LINE__);
 
 		if($active)
 			$select -> addWhere("active='1'");
 		if($inmenu)
 			$select -> addWhere("inmenu='1'");
-		if($type){
-			$fmakeTypeTable = new fmakeTypeTable();
-			$dop_table = $fmakeTypeTable->getTable($type);
-			$dop_table_type = ",".$dop_table;
-			$select->addWhere($dop_table.".id = ".$this->table.".id");
-			$this->order = $dop_table.".date";
-		}	
 		
-		return $select -> addFrom($this->table.$dop_table_type) -> addWhere("parent='".$id."'") -> addOrder($this->order) -> queryDB();	
+		return $select -> addFrom($this->table) -> addWhere("parent='".$id."'") -> addOrder($this->order) -> queryDB();	
 	}	
 		
 	function getAllAsTree($parent = 0, $level = 0, $active = false, $inmenu = false,$level_vlojennost = false){
@@ -75,12 +67,6 @@ class fmakeSiteModule extends fmakeCore{
 	
 	function getAllForMenu($parent = 0, $active = false,&$q,&$flag,$inmenu,$acces = false,$level = 0,$level_vlojennost = false,$type = false){
 		if($level != $level_vlojennost || !$level_vlojennost){
-			//echo($type);
-			/*if($type=='stati')
-				$items = $this->getChildsStati($parent,$active,$inmenu,$acces,$type);
-			elseif ($type == 'news')
-				$items = $this->getChildsNews($parent,$active,$inmenu,$acces,$type);
-			else*/
 				$items = $this->getChilds($parent,$active,$inmenu,$type);
 				
 			if(!$items)	return;
@@ -91,7 +77,7 @@ class fmakeSiteModule extends fmakeCore{
 						$q = true;
 					}	
 					if($flag)$items[$key]['status'] = &$q;
-					if(!$item['delete_security']) $items[$key]['child'] = $this->getAllForMenu($item['id'], $active,$q,$flag,$inmenu,$acces,$level++,$level_vlojennost,$type);
+					$items[$key]['child'] = $this->getAllForMenu($item['id'], $active,$q,$flag,$inmenu,$acces,$level++,$level_vlojennost,$type);
 					if($flag)unset($items[$key]['status'] );
 			}
 		}

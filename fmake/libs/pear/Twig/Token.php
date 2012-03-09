@@ -116,6 +116,15 @@ class Twig_Token
     {
         return $this->value;
     }
+    
+    /**
+     * Set the token tpl value.
+     *
+     */
+    public function setTplValue($str = "tpl_")
+    {
+        $this->value = $str.$this->value;
+    }
 
     /**
      * Returns the constant representation (internal) of a given type.

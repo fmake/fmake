@@ -24,7 +24,7 @@ class fmakeWhereSelector{
 		
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		if($this->order)
-			$select -> addOrder($this->order, (($this->order_as)?$this->order_as:ASC));
+			$select -> addOrder($this->order, (($this->order_as)?$this->order_as:'ASC'));
 			
 		$this->addWhereInObj($select,$where);
 		return $select -> addFrom($this->table) -> queryDB();
@@ -35,7 +35,7 @@ class fmakeWhereSelector{
 		
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		if($this->order)
-			$select -> addOrder($this->order, (($this->order_as)?$this->order_as:ASC));
+			$select -> addOrder($this->order, (($this->order_as)?$this->order_as:'ASC'));
 			
 		$this->addWhereInObj($select,$where);
 		
@@ -47,7 +47,7 @@ class fmakeWhereSelector{
 			
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		if($this->order)
-			$select -> addOrder($this->order, (($this->order_as)?$this->order_as:ASC));
+			$select -> addOrder($this->order, (($this->order_as)?$this->order_as:'ASC'));
 			
 		$this->addWhereInObj($select,$where);
 		$this->addFieldInObj($select,$field);
@@ -60,7 +60,7 @@ class fmakeWhereSelector{
 			
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		if($this->order)
-			$select -> addOrder($this->order, (($this->order_as)?$this->order_as:ASC));
+			$select -> addOrder($this->order, (($this->order_as)?$this->order_as:'ASC'));
 			
 		$this->addWhereInObj($select,$where);
 		$this->addFieldInObj($select,$field);

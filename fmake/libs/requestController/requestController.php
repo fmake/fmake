@@ -18,7 +18,7 @@ class requestController{
 	}
 	
 	function getEscape($key){
-		return mysql_real_escape_string($_REQUEST[$key]);
+		return isset($_REQUEST[$key]) ? mysql_real_escape_string($_REQUEST[$key]) : false;
 	}
 	
 	

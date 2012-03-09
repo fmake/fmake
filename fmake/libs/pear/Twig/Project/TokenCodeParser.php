@@ -23,6 +23,10 @@ class Twig_Project_TokenCodeParser extends Twig_TokenParser
         $stream = $this->parser->getStream();
         if($stream->test(Twig_Token::NAME_TYPE)){
         	$object = $stream->look(0)->getValue();
+        	/**
+        	 * добавляем tpl_ подпись к функции
+        	 */
+        	$stream->look(2)->setTplValue();
         }else {
         	throw new Twig_Error_Syntax("When using get, you must have the same number of variables and assignements.", $lineno);
         }

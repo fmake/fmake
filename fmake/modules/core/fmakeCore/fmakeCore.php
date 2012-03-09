@@ -98,7 +98,7 @@ class fmakeCore extends fmakeWhereSelector{
 	 * получаем поля таблицы
 	 */
 	function getFilds(){
-		$r = $this->dataBase->query("SHOW COLUMNS FROM `".$prefix.$this->table."`", __LINE__);
+		$r = $this->dataBase->query("SHOW COLUMNS FROM `".$this->table."`", __LINE__);
 		if ($r && $this->dataBase->num_rows($r)){
 			
 			while ($obj = $this->dataBase->fetch_array()){
@@ -289,7 +289,7 @@ class fmakeCore extends fmakeWhereSelector{
 		
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		if($this->order)
-			$select -> addOrder($this->order, (($this->order_as)?$this->order_as:ASC));
+			$select -> addOrder($this->order, (($this->order_as)?$this->order_as:'ASC'));
 		if($active)
 			$select -> addWhere("active='1'");
 		return $select -> addFrom($this->table) -> queryDB();

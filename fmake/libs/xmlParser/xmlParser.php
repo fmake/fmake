@@ -4,11 +4,11 @@ class xmlParser{
 	function fileXmlToArray($path){
 		$data = file_get_contents($path);
 		//printAr(@simplexml_load_string($data));
-		return $this->objectsIntoArray(@simplexml_load_string($data));
+		return $this->objectsIntoArray(simplexml_load_string($data));
 	}
 	
 	function xmlToArray($data){
-		return $this->objectsIntoArray(@simplexml_load_string($data));
+		return $this->objectsIntoArray(simplexml_load_string($data));
 	}
 	
 	function objectsIntoArray($arrObjData, $arrSkipIndices = array()){
