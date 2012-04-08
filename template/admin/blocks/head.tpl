@@ -9,8 +9,6 @@
 
 <title>Центр администрирования</title>
 
-
-	<link rel="stylesheet" type="text/css" href="/styles/admin/main.css" />
 	<meta http-equiv="X-UA-Compatible" content="IE=7" />
 
 	<!--[if lte IE 6]>
@@ -19,10 +17,9 @@
 	<!--[if IE]>
 		<link rel="stylesheet" type="text/css" href="/styles/ie.css" />
 	<![endif]-->
-	<script type="text/javascript" src="/js/jquery-1.4.4.min.js"></script>
-	<script type="text/javascript" src="/js/jquery-ui-1.8.10.custom.min.js"></script>
-	<script type="text/javascript" src="/js/scripts.js"></script>
-	<script type="text/javascript" src="/js/tree.js"></script>
+	<link rel="stylesheet" type="text/css" href="/styles/admin/main.css" />
+	<script src="/js/admin/jquery-1.5.2.min.js" type="text/javascript"></script>
+	<script src="/js/admin/adminscript.js" type="text/javascript"></script>
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 	[[raw]]
 	<script>

@@ -1,7 +1,10 @@
 [[ extends  TEMPLATE_PATH ~ "admin/main.tpl" ]]
 
 [[ macro childGenerateItem(item,actions,request) ]]
-	<div>							
+	<div>	
+		[[if not item.parent]]
+			<img alt="раскрыть" src="/images/admin/munes-hideen.gif" class="plus_parent" rel="plus"/>
+		[[endif]]						
 		<img alt="перенести" src="/images/admin/parent-mini.png" class="cursor-move" />
 		<a href="[[if item['delete_security']]]/admin/?modul={item.modul_redir}[[else]]/admin/?modul={request.modul}&id={item.id}&dop_polya=hide&action=edit[[endif]]" class="droppable_inner[[if item['delete_security']]] delete_security[[endif]]" >{item['caption']}</a>
 		<div class="actions" >
@@ -40,66 +43,19 @@
 	
 [[endblock]]
 
-[[block center_all]]	
+[[block center]]	
 
 [[phpcode`
 	$context['xajax']->printJavascript("/libs/xajax/");
 `]] 
 
-<div class="center-content-all">
-	[[block sub_menu]]
-		{parent()}
-	[[endblock]]
-	
-<div class="page-content" >
-	
-	<table class="rt" >
-		<tr>
-			<td class="rt-tl"></td>
-			<td class="rt-tc" ></td>
-			<td class="rt-tr" ></td>
-		</tr>
-		<tr>
-			<td class="rt-ml"></td>
-			<td class="rt-mc">
-				
-				<h1>{mod['caption']}</h1> 
-				
-					<div class="actions" >
-						<table class="rt" >
-							<tr>
-								<td class="rt-tl"></td>
-								<td class="rt-tc" ></td>
-								<td class="rt-tr" ></td>
-							</tr>
-							<tr>
-								<td class="rt-ml"></td>
-								<td class="rt-mc" >
-									<a href="/admin/?modul={request.modul}&dop_polya=hide&action=new" class="action-link" ><div><img src="/images/admin/and.png" alt="" /></div>Добавить</a>
-								</td>
-								<td class="rt-mr" ></td>
-							</tr>
-							<tr>
-								<td class="rt-bl"></td>
-								<td class="rt-bc" ></td>
-								<td class="rt-br" ></td>
-							</tr>
-						</table>
-					</div>
-				<br />
-				<div id="tree" >
-						{_self.tree(items,actions,request)}
-				</div>
-			</td>
-			<td class="rt-mr" ></td>
-		</tr>
-		<tr>
-			<td class="rt-bl"></td>
-			<td class="rt-bc" ></td>
-			<td class="rt-br" ></td>
-		</tr>
-	</table>
-	
-</div>
+
+<h1>Управление контентом</h1>
+<button class="fmk-button-admin" onclick="document.location='/admin/?modul={request.modul}&dop_polya=hide&action=new';return false;"><div><div><div>Добавить страницу</div></div></div></button>
+<script type="text/javascript" src="/js/admin/jquery-ui-1.8.10.custom.min.js"></script>
+<script type="text/javascript" src="/js/admin/admintree.js"></script>
+<br /><br />
+<div id="tree" >
+	{_self.tree(items,actions,request)}
 </div>
 [[endblock]]

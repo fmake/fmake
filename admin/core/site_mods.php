@@ -31,6 +31,7 @@ require_once (ROOT."/libs/xajax/xajax_core/xajax.inc.php");
 $xajax = new xajax();
 $xajax->setCharEncoding('utf8');
 //$xajax->debugOn();
+//$xajax->configure('debug',true);
 $xajax->registerFunction("setGeneralParent");
 $xajax->registerFunction("setParent");
 $xajax->processRequest();
@@ -52,8 +53,6 @@ $globalTemplateParam->set('filds', $filds);
 
 
 $absitem = new fmakeSiteModule();
-$tags = new fmakeSiteModule_tags();	
-$user = new fmakeSiteUser($request->id);
 
 	
 	
@@ -105,27 +104,21 @@ switch($request->action)
 					else $absitem ->addParam($key, $value);
 				}
 				$absitem -> newItem();
-				// теги
-				$tags->addTags($_POST['tags'],$absitem -> id) ;	
-				// для ролей
-					$user->getAccesObj()->setAcces($absitem -> id,$request->rols_array);
-				// --------
 			break;
 		
 			case 'update': // Переписать
+				$tmp_item = $absitem->getInfo();
 				foreach ($_POST as $key=>$value){
 					if($key=='text') $absitem ->addParam($key, mysql_real_escape_string($value));
 					else $absitem ->addParam($key, $value);
 				}
 				$absitem -> update();
-				// теги
-				$tags->addTags($_POST['tags'],$absitem -> id) ;	
-				// для ролей
-					$user->getAccesObj()->setAcces($absitem -> id,$request->rols_array);
-				// --------
+				
 			break;
 		
 			case 'delete': // Удалить
+				$items = $absitem->getInfo();
+				$absitem->DeleteUrlXml('http://'.$hostname.'/'.$items['redir'].'/');
 				$absitem -> delete();
 			break;
 			
@@ -150,18 +143,16 @@ switch($request->action)
 		$items = $absitem -> getInfo();
 		$flag_url = false;
 		// для ролей
-		$checkRols = $user->getAccesObj()->arraySimple($user->getAccesObj()->getByModulId($items['id'],"id_role"),"id_role");
+		//$checkRols = $user->getAccesObj()->arraySimple($user->getAccesObj()->getByModulId($items['id'],"id_role"),"id_role");
 		// ---------
 	case 'new': // Далее форма
 		$modules = $absitem -> getAllAsTree();
 	
 		// для ролей
-		$rols = $user->getRoleObj()->getAll();
-		if(!$checkRols)$checkRols = array();
+		//$rols = $user->getRoleObj()->getAll();
+		//if(!$checkRols)$checkRols = array();
 		// ---------
-		
-		$tagsStr = $tags -> tagsToString( $tags -> getTags ($items[$absitem->idField]) );
-		$tagsJsStr = $tags -> tagsToJsString( $tags -> getAll () );
+	
 		
 		$content .= '<script type="text/javascript" src="/js/jquery.autocomplete.js"></script>';
 	
@@ -227,32 +218,15 @@ switch($request->action)
 		}
 		$form->AddElement($_file);
 		
-		// для ролей
-		//добавляем роли	
-		$form->addHtml("","<td><b>Доступ к разделу запрещен</b>:</td><td></td>");
-		for($j=0;$j<count($rols);$j++){
-			$form->addCheckBox("&nbsp;&nbsp;".$rols[$j]['role'],"rols_array[]",$rols[$j]['id'],in_array($rols[$j]['id'],$checkRols));
-		}
-		//--------------
 		
-		$form->addTextAreaMini("Теги ( через запятую )", "tags", $tagsStr,1,1);
-
-	
-		$form->addFCKEditor("Текст", "text", $items['text']);
+		//$form->addFCKEditor("Текст", "text", $items['text']);
+		$form->addTinymce("Текст", "text", $items['text']);
 		
 
 		$form->addSubmit("save", "Сохранить");
 		$content .= $form->printForm();
 		
-		$content .= '<script type="text/javascript">
-			var tags = ['.$tagsJsStr.']
 		
-			$("#tags").autocomplete(tags , {
-				multiple: true,
-				mustMatch: false,
-				autoFill: true
-			});
-		</script>';
 		if($flag_url){
 		$content .='
 			<script>

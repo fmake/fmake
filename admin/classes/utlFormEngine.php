@@ -145,6 +145,15 @@ class utlFormEngine
 		return $this;		
 	}
 	
+	function addTinymce($caption, $name, $value,$text = false)
+	{
+		$oTinymce = new Tinymce($name) ;
+		$oTinymce->Value = $value;
+
+		$this->AddElement(new formElement("1", $caption, $name, "NEWTEXT", "50", $oTinymce->CreateHtml(), false, "", "",null,$text));
+		return $this;		
+	}
+	
 	function addHtml($name, $value)
 	{
 		$this->AddElement(new formElement("1", $name, "", "HTML", "50", $value, false, "", ""));

@@ -1,6 +1,196 @@
 [[ include TEMPLATE_PATH ~ "admin/blocks/head.tpl" ]]
 
 <body>
+	
+	<div id="page">
+		<div id="p-inner">
+			<div id="head">
+				<a href="/" id="logo" title="Fmake Cms">
+					администрирование сайтов
+				</a>
+				<div id="right-head">
+					Вы вошли как {admin.name} | <a href="./?action=logout">выйти</a><br />
+					перейти: <a href="http://{hostname}" target="_blank">{hostname}</a><br/>
+					/*<form action="/search/" method="post" id="search-form">
+						<input type="text" name="q"  class="text"/>
+						<input type="image" src="/images/admin/btn-search.gif" onclick="javascript:doWepSearch();" />
+					</form>*/
+				</div>
+
+				[[ include TEMPLATE_PATH ~ "admin/blocks/topmenu.tpl" ]]
+				
+				
+			</div>
+			
+			<div id="content">
+				[[ block left_content]]
+				<div id="left">
+					[[ include TEMPLATE_PATH ~ "admin/blocks/leftmenu.tpl" ]]
+				</div>
+				[[endblock]]
+				<div id="center">
+					[[ block center]]
+					<h1>Управление контентом</h1>
+					<button class="fmk-button-admin"><div><div><div>Добавить страницу</div></div></div></button>
+					<script type="text/javascript" src="/js/admin/jquery-ui-1.8.10.custom.min.js"></script>
+					<script type="text/javascript" src="/js/admin/admintree.js"></script>
+					<br /><br />
+					<div id="tree">
+					<ul class="dotted">
+						<li class="droppable">
+							<ul class="children no-bg">
+								<li class="droppable draggable ui-draggable">
+									<div class="ui-droppable">
+									<a title="свернуть" href=""><img src="/images/admin/munes.gif" alt="раскрыть"></a>
+									<img class="cursor-move" src="/images/admin/parent-mini.png" alt="перенести">
+										<a class="droppable_inner ui-droppable" href="/">Пункт меню 1</a>
+										<div class="actions ui-droppable">
+											<a href=""><img src="/images/admin/view-mini.gif"></a>
+											<a href=""><img src="/images/admin/copy-mini.gif"></a>
+											<a href=""><img src="/images/admin/off-mini.gif"></a>
+											<a href=""><img src="/images/admin/edit-mini.gif"></a>
+											<a href=""><img src="/images/admin/add-mini.gif"></a>
+											<a href=""><img src="/images/admin/delete-mini.gif"></a>
+										</div>
+									</div>
+									<ul class="children">
+										<li class="droppable draggable hover-li ui-draggable">
+											<div class="ui-droppable">
+											<a title="раскрыть" href=""><img src="/images/admin/munes-hideen.gif" alt="раскрыть"></a>
+											<img class="cursor-move" src="/images/admin/item-mini.png" alt="перенести">
+												<a class="droppable_inner ui-droppable" href="/">Пункт меню 2</a>
+												<div class="actions ui-droppable">
+													<a href=""><img src="/images/admin/view-mini.gif"></a>
+													<a href=""><img src="/images/admin/copy-mini.gif"></a>
+													<a href=""><img src="/images/admin/off-mini.gif"></a>
+													<a href=""><img src="/images/admin/edit-mini.gif"></a>
+													<a href=""><img src="/images/admin/add-mini.gif"></a>
+													<a href=""><img src="/images/admin/delete-mini.gif"></a>
+												</div>
+											</div>
+											<ul class="children"> </ul>
+										</li>
+									 </ul>
+								</li>
+								<li class="droppable draggable ui-draggable">
+									<div class="ui-droppable">
+									<a title="раскрыть" href=""><img src="/images/admin/plus.gif" alt="раскрыть"></a>
+									<img class="cursor-move" src="/images/admin/parent-mini.png" alt="перенести">
+										<a class="droppable_inner ui-droppable" href="/">Пункт меню 3</a>
+										<div class="actions ui-droppable">
+											<a href=""><img src="/images/admin/view-mini.gif"></a>
+											<a href=""><img src="/images/admin/copy-mini.gif"></a>
+											<a href=""><img src="/images/admin/off-mini.gif"></a>
+											<a href=""><img src="/images/admin/edit-mini.gif"></a>
+											<a href=""><img src="/images/admin/add-mini.gif"></a>
+											<a href=""><img src="/images/admin/delete-mini.gif"></a>
+										</div>
+									</div>
+									<ul class="children"> </ul>
+								</li>
+								<li class="droppable draggable ui-draggable">
+									<div class="ui-droppable">
+									<a title="раскрыть" href=""><img src="/images/admin/plus.gif" alt="раскрыть"></a>
+									<img class="cursor-move" src="/images/admin/parent-mini.png" alt="перенести">
+										<a class="droppable_inner ui-droppable" href="/">Пункт меню 4</a>
+										<div class="actions ui-droppable">
+											<a href=""><img src="/images/admin/view-mini.gif"></a>
+											<a href=""><img src="/images/admin/copy-mini.gif"></a>
+											<a href=""><img src="/images/admin/off-mini.gif"></a>
+											<a href=""><img src="/images/admin/edit-mini.gif"></a>
+											<a href=""><img src="/images/admin/add-mini.gif"></a>
+											<a href=""><img src="/images/admin/delete-mini.gif"></a>
+										</div>
+									</div>
+									<ul class="children"> </ul>
+								</li>
+								<li class="droppable draggable ui-draggable">
+									<div class="ui-droppable">
+									<a title="раскрыть" href=""><img src="/images/admin/plus.gif" alt="раскрыть"></a>
+									<img class="cursor-move" src="/images/admin/parent-mini.png" alt="перенести">
+										<a class="droppable_inner ui-droppable" href="/">Пункт меню 5</a>
+										<div class="actions ui-droppable">
+											<a href=""><img src="/images/admin/view-mini.gif"></a>
+											<a href=""><img src="/images/admin/copy-mini.gif"></a>
+											<a href=""><img src="/images/admin/off-mini.gif"></a>
+											<a href=""><img src="/images/admin/edit-mini.gif"></a>
+											<a href=""><img src="/images/admin/add-mini.gif"></a>
+											<a href=""><img src="/images/admin/delete-mini.gif"></a>
+										</div>
+									</div>
+									<ul class="children"> 
+										<li class="droppable draggable ui-draggable">
+											<div class="ui-droppable">
+											<a title="раскрыть" href=""><img src="/images/admin/plus.gif" alt="раскрыть"></a>
+											<img class="cursor-move" src="/images/admin/parent-mini.png" alt="перенести">
+												<a class="droppable_inner ui-droppable" href="/">Пункт меню 6</a>
+												<div class="actions ui-droppable">
+													<a href=""><img src="/images/admin/view-mini.gif"></a>
+													<a href=""><img src="/images/admin/copy-mini.gif"></a>
+													<a href=""><img src="/images/admin/off-mini.gif"></a>
+													<a href=""><img src="/images/admin/edit-mini.gif"></a>
+													<a href=""><img src="/images/admin/add-mini.gif"></a>
+													<a href=""><img src="/images/admin/delete-mini.gif"></a>
+												</div>
+											</div>
+											<ul class="children"> 
+												<li class="droppable draggable ui-draggable">
+													<div class="ui-droppable">
+													<a title="раскрыть" href=""><img src="/images/admin/plus.gif" alt="раскрыть"></a>
+													<img class="cursor-move" src="/images/admin/parent-mini.png" alt="перенести">
+														<a class="droppable_inner ui-droppable" href="/">Пункт меню 7</a>
+														<div class="actions ui-droppable">
+															<a href=""><img src="/images/admin/view-mini.gif"></a>
+															<a href=""><img src="/images/admin/copy-mini.gif"></a>
+															<a href=""><img src="/images/admin/off-mini.gif"></a>
+															<a href=""><img src="/images/admin/edit-mini.gif"></a>
+															<a href=""><img src="/images/admin/add-mini.gif"></a>
+															<a href=""><img src="/images/admin/delete-mini.gif"></a>
+														</div>
+													</div>
+													<ul class="children"> </ul>
+												</li>
+												<li class="droppable draggable ui-draggable">
+													<div class="ui-droppable">
+													<a title="раскрыть" href=""><img src="/images/admin/plus.gif" alt="раскрыть"></a>
+													<img class="cursor-move" src="/images/admin/parent-mini.png" alt="перенести">
+														<a class="droppable_inner ui-droppable" href="/">Пункт меню 8</a>
+														<div class="actions ui-droppable">
+															<a href=""><img src="/images/admin/view-mini.gif"></a>
+															<a href=""><img src="/images/admin/copy-mini.gif"></a>
+															<a href=""><img src="/images/admin/off-mini.gif"></a>
+															<a href=""><img src="/images/admin/edit-mini.gif"></a>
+															<a href=""><img src="/images/admin/add-mini.gif"></a>
+															<a href=""><img src="/images/admin/delete-mini.gif"></a>
+														</div>
+													</div>
+													<ul class="children"> </ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul> 
+					</div>
+					[[endblock]]
+				</div>
+				
+				<div id="subfooter"></div>
+				
+			</div>
+		</div>
+		<div id="footer">
+			<div class="footer-inner" >
+				 <a href="http://www.future-group.ru">© 2011 Future</a> | <a href="http://www.fmake.ru">Условия использования сайта</a> | <a href="">Положение о конфиденциальности</a>
+			</div>
+		</div>		
+	</div>	
+</body>
+</html>
+
+/*<body>
 	<!-- PAGE -->
 	<div class="page">
 		<div class="p-inner">
@@ -22,6 +212,7 @@
 			<div class="user-info" >
 				<div><a href="" ><img src="/images/admin/user-icon-mini.gif" /></a>  <a href="" >{admin.name}</a> (<a href="./?action=logout" class="red-link" >Выйти</a>)</div>
 				<div><a href="" ><img src="/images/admin/question-icon-mini.gif" /></a>  <a href="" > Помощь</a> <a href="./?modul=cms_content" ><img src="/images/admin/congif-icon-mini.gif" /> </a>  <a href="./?modul=cms_content" >Настроить</a></div>
+				<div style="padding-left: 10px;"><a href="http://{hostname}" target="_blank">{hostname}</a></div>
 			</div>
 				
 			</div><!-- HEADER -->
@@ -149,4 +340,4 @@
 	</div><!-- PAGE -->
 
 </body>
-</html>
+</html>*/

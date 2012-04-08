@@ -1,10 +1,13 @@
 [[ extends  TEMPLATE_PATH ~ "admin/main.tpl" ]]
 
 
-[[ block left ]]	
+[[ block left_content ]]	
+	<div id="left">
+		[[ include TEMPLATE_PATH ~ "admin/blocks/leftmenu.tpl" ]]
+	</div>
 [[endblock]]
 
-[[block center_all]]	
+[[block center]]	
 <div class="center-content-all">
 	[[block sub_menu]]
 		{parent()}
@@ -16,27 +19,7 @@
 	
 	{mod['text']}
 
-	<div class="actions" >
-		<table class="rt" >
-			<tr>
-				<td class="rt-tl"></td>
-				<td class="rt-tc" ></td>
-				<td class="rt-tr" ></td>
-			</tr>
-			<tr>
-				<td class="rt-ml"></td>
-				<td class="rt-mc" >
-					<a href="/admin/?modul={request.modul}&action=new" class="action-link" ><div><img src="/images/admin/and.png" alt="" /></div>Добавить пользователя</a>
-				</td>
-				<td class="rt-mr" ></td>
-			</tr>
-			<tr>
-				<td class="rt-bl"></td>
-				<td class="rt-bc" ></td>
-				<td class="rt-br" ></td>
-			</tr>
-		</table>
-	</div>
+<button class="fmk-button-admin" onclick="document.location='/admin/?modul={request.modul}&action=new';return false;"><div><div><div>Добавить</div></div></div></button>
 
 	[[if content]]
 		{content}

@@ -34,49 +34,69 @@ if (!$admin->isLogined())
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
-	<title>Venta-Cms</title>
+	<title>Сиситема администрирования Fmake</title>
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
-	<link rel="stylesheet" type="text/css" href="/styles/admin/main.css" />
-	<link rel="stylesheet" type="text/css" href="/styles/admin/login.css" />
-	<meta http-equiv="X-UA-Compatible" content="IE=7" />
-
-	<!--[if lte IE 6]>
-		<script type="text/javascript" src="/js/ie6-fix.js"></script>
-	<![endif]-->
-	<!--[if IE]>
-		<link rel="stylesheet" type="text/css" href="/styles/ie.css" />
-	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="/styles/login.css" />
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 </head>
 
-<body class="bodylogin" >
-	<!-- PAGE -->
-	<div class="page">
-		<div id="login" >
-		<form method="post">
+<body>
+	
+	<div id="page">
+		<div id="form-login">
+			<a href="http://www.fmake.ru" target="_blank"><div id="logo"></div></a>
+			<div id="site"><a href="/" target="_blank"><? echo($_SERVER['HTTP_HOST']); ?></a></div>
+			<div class="caption">Вход в систему администрирования</div>
+			<form method="post" >
 			<input type="hidden" name="action" value="Login" />
-			<table>
+			<? if($error){ ?><p class="err">Неправильное имя пользователя или пароль.</p> <? } ?>
+			<table class="table-login">
 				<tr>
-					<td class="f-td" >Логин</td>
-					<td><input type="text" name="login" class="text" />  </td>
+					<td>
+						Логин
+					</td>
 				</tr>
 				<tr>
-					<td>Пароль</td>
-					<td><input type="password" name="password" class="text" />  </td>
+					<td>
+						<input type="text" class="login" name="login" />
+					</td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<input type="checkbox" name="save" id="save"  /> <label for="save">Запомнить меня</label>
-						<button class="action-button f_rt" ><div></div><span>Войти</span>Войти</button>
+					<td>
+						Пароль
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="password" class="login" name="password"  />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" name="save" id="save" /> <label class="small" for="save">Запомнить меня</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button class="fmk-button"><div><div><div><div>Войти</div></div></div></div></button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="">Не могу вспомнить пароль</a>
 					</td>
 				</tr>
 			</table>
 			</form>
+			<div class="version">
+				версия: v0.0.1
+			</div>
+			<div class="create">
+				<a href="" target="_blank">Создание сайтов</a> - Future-Group.ru
+			</div>
 		</div>
-		
-	</div><!-- PAGE -->
-
+	</div>	
 </body>
 </html>
 <?  
