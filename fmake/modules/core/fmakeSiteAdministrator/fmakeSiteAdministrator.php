@@ -1,7 +1,4 @@
 <?php
-define(ID_ADMINISTRATOR,1);
-define(ID_MODERATOR,2);
-define(ID_REGISTRATOR,3);
 
 class fmakeSiteAdministrator extends fmakeCore{
 	

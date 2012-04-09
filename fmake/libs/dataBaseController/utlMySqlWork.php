@@ -70,8 +70,9 @@ class utlMySqlWork
 
 	function query($ss,$Line) 
 	{
-		if($this -> log)
+		if($this -> log){
 			$this -> log -> add($ss);
+		}
 
 		if($this->CurrentResult>1){ if(!$this->DoNotFreeResult){ mysql_free_result($this->CurrentResult); }}
 		$this->CurrentResult=mysql_query($ss,$this->Connection_id);

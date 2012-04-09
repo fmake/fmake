@@ -7,5 +7,5 @@
  */
 class fmakeModule_config extends fmakeCore{
 	public $idField = "id_modules_config";
-	public $table = "modules_config";
+	public $table = "modules_configs";
 }

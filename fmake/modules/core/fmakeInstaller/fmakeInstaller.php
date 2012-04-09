@@ -1,4 +1,10 @@
-<?php 
+<?php
+/**
+ * 
+ * Установка модуля из архива *.zip по xml файлу
+ * @author n1k
+ *
+ */
 class fmakeInstaller extends fmakeCore{
 	private $extractFolder = "";
 	private $constant = array(
@@ -93,8 +99,9 @@ class fmakeInstaller extends fmakeCore{
 		 */
 		if( file_exists($this -> extractFolder. $this -> install['db']) ){
 			 $sql = file_get_contents( $this -> extractFolder. $this -> install['db'] );
-			 if($sql)
+			 if($sql){
 			 	$this->dataBase->query($sql,__LINE__);
+			 }
 		}
 		/**
 		 * если есть файлы шаблонизатора

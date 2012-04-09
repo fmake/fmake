@@ -88,7 +88,6 @@ class fmakeCore extends fmakeWhereSelector{
 	 * @param unknown_type $value значение параметра
 	 */
 	function addParam ($key, $value){
-		
 		$this->params[$key] = $value;
 		
 	}

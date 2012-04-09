@@ -8,18 +8,17 @@ error_reporting(E_ALL);
 
 require('./fmake/FController.php');
 
-$modul = new fmakeSiteModule();
-$modul->getPage($request -> getEscape('modul') ,$twig);
-$globalTemplateParam->set('modul',$modul);
+$content = new fmakeContent();
+$content->getPage($request -> getEscape('modul') ,$twig);
+$globalTemplateParam->set('content',$content);
 
-//добавляем каталог к основным модулям
-$menu = $modul->getAllForMenu(0, true,$q=false,$flag=true,true);
+$menu = $content->getAllForMenu(0, true,$q=false,$flag=true,true);
 $globalTemplateParam->set('menu',$menu);
 
-$modul->template = "base/main.tpl";
+$content->template = "base/main.tpl";
 
-if($modul->file){
-	include($modul->file.".php");
+if($content->file){
+	include($content->file.".php");
 } 
 
 
