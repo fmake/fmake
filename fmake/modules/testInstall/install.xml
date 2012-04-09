@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modul>
+	<name>testInstall</name>
+	<path>/modules/</path>
+	<description>Модуль предназначен для тестирования установки всех модулей в систему</description>
+	<templateFolder>/templateTestInstall/</templateFolder>
+	<templateFolderAdmin>/adminTestInstall/</templateFolderAdmin>
+	<template>
+		<item>
+			<name>Главные новости</name>
+			<path>{$templateFolder}name.tpl</path>
+		</item>
+	</template>
+	<config>
+		<item>
+			<name>page_count</name>
+			<description>Количество выводих объектов на странице</description>
+			<value>10</value>
+		</item>
+		<item>
+			<name>show</name>
+			<description>Отображение объектов</description>
+			<value>1</value>
+		</item>
+	</config>
+</modul>

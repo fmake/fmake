@@ -1,0 +1,34 @@
+Установка модуля производится из архива *.zip
+1. Структцра файлов
+	1.1. "_name".php - файл основного класса, "name".php файл класса где программист вносит свои правки которые не будут изменены при обновлении
+	2.2. "nameAdmin".php - файл для представления в системе администрирования
+	2.3. db.sql - файл для выполнения прямого запроса в базу данных
+	2.4. install.xml - инструкции для установки
+	2.5. install.php - айл для выполнения php кода, выполняется до ззапроса в базу данных файлом db.sql
+3.В архиве должн быть файл install.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<modul>
+	<name>moduleName</name> - Имя модуля, должен быть файл с таким же именем
+	<path>/modules/</path> - Путь где будет размещаться папка модуля
+	<description>Модуль предназначен для тестирования установки всех модулей в систему</description> - Описание модуля
+	<templateFolder>/templateTestInstall/</templateFolder> - Папка шаблонов модуля
+	<templateFolderAdmin>/adminTestInstall/</templateFolderAdmin> - Папка администраторских модуля
+	<template> - Шаблоны для регистрации
+		<item>
+			<name>Главные новости</name> - имя шаблона
+			<path>{$templateFolder}name.tpl</path> - пусть до шаблона
+		</item>
+	</template>
+	<config> - Параметры модуля
+		<item>
+			<name>page_count</name> - название на английском
+			<description>Количество выводих объектов на странице</description> - описание параметра
+			<value>10</value> - значение
+		</item>
+		<item>
+			<name>show</name>
+			<description>Отображение объектов</description>
+			<value>1</value>
+		</item>
+	</config>
+</modul>
