@@ -1,4 +1,4 @@
 <?php
-class _pattern extends fmakeCore{
+class _testInstall extends fmakeCore{
 	
 }

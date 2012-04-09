@@ -45,5 +45,5 @@
 	/**
 	 * создаем класс глобальных параметров
 	 */
-	$configs = new globalConfigs();
+	$configs = new fmakeConfigs();
 	$globalTemplateParam->set('configs',$configs);

@@ -1,5 +1,11 @@
-<?
-class utlPicture
+<?php
+/**
+ * 
+ * генерация изображений
+ * @author n1k
+ *
+ */
+class generatePicture
 {
 	public $bg = "/images/picbg.gif";
 	public $font = "/images/fonts/tahoma.ttf";
@@ -29,4 +35,3 @@ class utlPicture
 		return $this->line;
 	}
 }
-?>

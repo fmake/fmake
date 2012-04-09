@@ -1,5 +1,5 @@
 <?php 
-	class fmakeAcces extends fmakeCore{
+	class fmakeAccess extends fmakeCore{
 		
 		function getAccessQuery($field,$where){
 			return $this->getFieldWhereSqlQuery($field,$where);

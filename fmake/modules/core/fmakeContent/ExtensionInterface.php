@@ -1,7 +1,7 @@
 <?php
-interface fmakeSiteModule_ExtensionInterface{
+interface fmakeContent_ExtensionInterface{
 	 /** 
-     * @return string The extension name
+     * @return string Имя расширения
      */
     function getName();
 }

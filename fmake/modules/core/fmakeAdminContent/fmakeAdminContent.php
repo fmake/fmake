@@ -1,10 +1,9 @@
 <?php
-class fmakeAdminController extends fmakeCore{
+class fmakeAdminContent extends fmakeCore{
 	
-	public $table = "admin_modul";
+	public $table = "admin_content";
 	public $modul = false;
 	public $order = "position";
-	public $fileDirectory = "images/icons/";
 	
 	/**
 	 * @var fmakeSiteAdministrator
@@ -12,10 +11,13 @@ class fmakeAdminController extends fmakeCore{
 	public static $userObj;
 	public static $adminModulAccessQuery = false;
 	
-	
+	/**
+	 * 
+	 * @return fmakeAdminContent_users
+	 */
 	function getUserObj(){
 		if(!self::$userObj){
-			self::$userObj = new fmakeSiteAdministrator();
+			self::$userObj = new fmakeAdminContent_users();
 		}
 		return self::$userObj;
 	}

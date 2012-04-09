@@ -1,6 +1,6 @@
 <?php
 
-class fmakeSiteAdministrator extends fmakeCore{
+class fmakeAdminContent_users extends fmakeCore{
 	
 	public $table = "site_administrator";
 	public $id; 	// int
@@ -9,7 +9,7 @@ class fmakeSiteAdministrator extends fmakeCore{
 	public $status;	// bool
 	public $acces;	// char
 	public $name;
-	
+	public $type = "admin";
 	
 	public static $accesObj = false;
 	public static $roleObj = false;
@@ -20,7 +20,7 @@ class fmakeSiteAdministrator extends fmakeCore{
 	 */
 	function getAccesObj(){
 		if(!self::$accesObj){
-			self::$accesObj = new fmakeAcces_adminModul();
+			self::$accesObj = new fmakeAdminContent_access();
 		}
 		return self::$accesObj;
 	}
@@ -65,7 +65,9 @@ class fmakeSiteAdministrator extends fmakeCore{
 
 	public function load()
 	{
-		$this->id = $_SESSION[$this->type]['id'];
+		if(!isset($_SESSION[$this->type]))
+			return false; 
+		$this->id = $_SESSION[$this->type]['id'] ;
 		$this->login = $_SESSION[$this->type]['login'];
 		$this->role = $_SESSION[$this->type]['role'];
 		$this->status = $_SESSION[$this->type]['status'];

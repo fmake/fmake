@@ -16,9 +16,13 @@ define('SQL_LOG', true);
  */
 define('TEMPLATE', '/template');
 /**
+ * папка шаблонов администратора до шаблонов
+ */
+define('TEMPLATE_ADM_FOLDER', '/admin');
+/**
  * относительный путь до шаблонов
  */
-define('TEMPLATE_ADM', TEMPLATE.'/admin');
+define('TEMPLATE_ADM', TEMPLATE.TEMPLATE_ADM_FOLDER);
 /**
  * относительный путь до кеша
  */

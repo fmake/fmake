@@ -1,14 +1,21 @@
 <?PHP
-
+/**
+ * 
+ * Контроль переменных из вне
+ * @author n1k
+ *
+ */
 class requestController{
 	
-	public function __isset($key){
- 		return true;
-  	}
 	
+	function __isset($key)
+	{	
+		return isset( $_REQUEST[$key] );
+	}
+  	
 	function __get($key)
 	{	
-		return $_REQUEST[$key];
+		return $this -> __isset ( $key ) ? $_REQUEST[$key] : false;
 	}
 	
 	
@@ -18,7 +25,7 @@ class requestController{
 	}
 	
 	function getEscape($key){
-		return isset($_REQUEST[$key]) ? mysql_real_escape_string($_REQUEST[$key]) : false;
+		return $this -> __isset ( $key ) ? mysql_real_escape_string($_REQUEST[$key]) : false;
 	}
 	
 	

@@ -19,7 +19,6 @@ class fmakeContent extends fmakeCore{
 	public $order = "position";
 	public $tree = array();
 	
-	public static $adminModulAccessQuery = false;
 	
 	public function __isset($key){
  		return isset($this->params[$key]);
@@ -135,7 +134,13 @@ class fmakeContent extends fmakeCore{
 		exit();
 	}	
 	
-	function getPage($url,$twig){
+	/**
+	 * 
+	 * получить страницу по адресу
+	 * @param  $url
+	 * @param  $twig
+	 */
+	function getPage($url){
 		
 		$this->getItem($url);
 		

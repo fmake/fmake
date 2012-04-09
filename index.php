@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 require('./fmake/FController.php');
 
 $content = new fmakeContent();
-$content->getPage($request -> getEscape('modul') ,$twig);
+$content->getPage($request -> getEscape('modul'));
 $globalTemplateParam->set('content',$content);
 
 $menu = $content->getAllForMenu(0, true,$q=false,$flag=true,true);

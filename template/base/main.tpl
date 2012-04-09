@@ -39,7 +39,7 @@
 					
 					<div id="center" >
 						
-						[[get patern.test('/news/news.tpl')]] 
+						[[get testInstall.test('/news/news2.tpl')]] 
 						
 					</div><!-- CENTER -->
 					

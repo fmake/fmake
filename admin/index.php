@@ -1,13 +1,14 @@
-<?
+<?php
 header('Content-type: text/html; charset=utf-8'); 
-session_start();
-
-setlocale(LC_ALL,'ru_RU.UTF-8'); 
+setlocale(LC_ALL, 'ru_RU.UTF-8');
 mb_internal_encoding('UTF-8');
-
 ini_set('display_errors',1);
-error_reporting(7);
-require_once('../libs/FController.php');
+error_reporting(E_ALL);
+
+
+require('../fmake/FController.php');
+
+
 	set_include_path(
 		get_include_path().PATH_SEPARATOR
 		.ROOT.DIRECTORY_SEPARATOR.'admin'.PATH_SEPARATOR
@@ -20,7 +21,7 @@ require_once('../libs/FController.php');
 
 	
 	
-$modulObj = new fmakeAdminController();
+$modulObj = new fmakeAdminContent();
 
 require_once('checklogin.php');
 $mod = $modulObj->getModul( $admin->getRole(),$request->modul);
@@ -63,7 +64,3 @@ $globalTemplateParam->set('admin', $admin);
 
 $template = $twig->loadTemplate($template);
 $template->display($globalTemplateParam->get());
-
-
-
-?>
