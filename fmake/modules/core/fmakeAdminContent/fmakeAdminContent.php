@@ -4,7 +4,7 @@ class fmakeAdminContent extends fmakeCore{
 	public $table = "admin_content";
 	public $modul = false;
 	public $order = "position";
-	
+	public $order_as = "ASC";
 	/**
 	 * @var fmakeSiteAdministrator
 	 */
@@ -26,7 +26,7 @@ class fmakeAdminContent extends fmakeCore{
 		if($id === null)
 			$id = $this->id;
 		// поля которе будем запрашивать для меню	
-		$field = array('id','caption','redir','file','`index`','active','icons');
+		$field = array('id','caption','redir','file','`index`','active');
 		$where = array("parent = '".$id."'");
 		if($active)
 			$where[sizeof($where)] = "active='1'";

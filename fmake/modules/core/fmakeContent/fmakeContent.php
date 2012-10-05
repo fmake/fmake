@@ -58,7 +58,7 @@ class fmakeContent extends fmakeCore{
 			$select -> addWhere("inmenu='1'");
 		}
 		
-		return $select -> addFrom($this->table) -> addWhere("parent='".$id_content."'") -> addOrder($this->order) -> queryDB();	
+		return $select -> addFrom($this->table) -> addWhere("id_parent='".$id_content."'") -> addOrder($this->order) -> queryDB();	
 	}	
 		
 	function getAllAsTree($parent = 0, $level = 0, $active = false, $inmenu = false,$level_vlojennost = false){
@@ -180,7 +180,7 @@ class fmakeContent extends fmakeCore{
 		
 		$order = $this->getInfo();
 		$select = $this->dataBase->SelectFromDB( __LINE__);
-		$arr = $select -> addFrom($this->table)-> addWhere("`parent` = '{$order['parent']}' ")  -> addWhere("`position` < '{$order['position']}' ") -> addOrder('position', 'DESC')  -> addLimit(0, 1) -> queryDB();
+		$arr = $select -> addFrom($this->table)-> addWhere("`id_parent` = '{$order['id_parent']}' ")  -> addWhere("`position` < '{$order['position']}' ") -> addOrder('position', 'DESC')  -> addLimit(0, 1) -> queryDB();
 		$arr = $arr[0];
 		
 		if($arr)
@@ -195,7 +195,7 @@ class fmakeContent extends fmakeCore{
 		
 		$order = $this->getInfo();
 		$select = $this->dataBase->SelectFromDB( __LINE__);
-		$arr = $select -> addFrom($this->table)-> addWhere("`parent` = '{$order['parent']}' ") -> addWhere("`position` > '{$order['position']}' ") -> addOrder('position', 'ASC')  -> addLimit(0, 1) -> queryDB();
+		$arr = $select -> addFrom($this->table)-> addWhere("`id_parent` = '{$order['id_parent']}' ") -> addWhere("`position` > '{$order['position']}' ") -> addOrder('position', 'ASC')  -> addLimit(0, 1) -> queryDB();
 		$arr = $arr[0];
 
 		if($arr){
@@ -214,10 +214,10 @@ class fmakeContent extends fmakeCore{
 		$info = $this->getInfo();
 		// добавляем объект в дерево
 		$this->setId($from);
-		$this->addParam("parent", $info['parent']);
+		$this->addParam("id_parent", $info['id_parent']);
 		$this->update();		
 		$select = $this->dataBase->SelectFromDB( __LINE__);
-		$arr = $select->addFild("id") -> addFrom($this->table)->addWhere("`parent` = '".$info['parent']."' ") -> addOrder('position', 'ASC') -> queryDB();
+		$arr = $select->addFild("id") -> addFrom($this->table)->addWhere("`id_parent` = '".$info['id_parent']."' ") -> addOrder('position', 'ASC') -> queryDB();
 		$fromNum = 0;
 		$toNum = 0;
 		for($i=0;$i<sizeof($arr);$i++){
@@ -247,11 +247,11 @@ class fmakeContent extends fmakeCore{
      */
     function setParent($child,$parent){
     	$this->setId($child);
-		$this->addParam("parent", $parent);
+		$this->addParam("id_parent", $parent);
 		$this->update();
 		
 		$select = $this->dataBase->SelectFromDB( __LINE__);
-		$arr = $select->addFild("id") -> addFrom($this->table)->addWhere("`parent` = '".$info['parent']."' ") -> addOrder('position', 'ASC') -> queryDB();
+		$arr = $select->addFild("id") -> addFrom($this->table)->addWhere("`id_parent` = '".$info['id_parent']."' ") -> addOrder('position', 'ASC') -> queryDB();
 		$childNum = 0;
 		for($i=0;$i<sizeof($arr);$i++){
 			if($arr[$i]['id'] == $child){
@@ -301,7 +301,7 @@ class fmakeContent extends fmakeCore{
 		if($active){
 			$select -> addWhere("active='1'");
 		}
-		return $select -> addFrom($this->table.$table) -> addOrder($order, DESC)->addWhere($this->table.'.parent in ('.$parent.')') -> addLimit((($page-1)*$limit), $limit) -> queryDB();
+		return $select -> addFrom($this->table.$table) -> addOrder($order, DESC)->addWhere($this->table.'.id_parent in ('.$parent.')') -> addLimit((($page-1)*$limit), $limit) -> queryDB();
 	}
 	
 }

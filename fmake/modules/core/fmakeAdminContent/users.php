@@ -2,7 +2,7 @@
 
 class fmakeAdminContent_users extends fmakeCore{
 	
-	public $table = "site_administrator";
+	public $table = "admin_user";
 	public $id; 	// int
 	public $login;	// char
 	public $role;	// int

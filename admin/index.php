@@ -6,29 +6,17 @@ ini_set('display_errors',1);
 error_reporting(E_ALL);
 
 
-require('../fmake/FController.php');
+
+require('FAdminController.php');
 
 
-	set_include_path(
-		get_include_path().PATH_SEPARATOR
-		.ROOT.DIRECTORY_SEPARATOR.'admin'.PATH_SEPARATOR
-		.ROOT.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'core'.PATH_SEPARATOR
-		.ROOT.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'modules'.PATH_SEPARATOR
-		.ROOT.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'includes'.PATH_SEPARATOR
-		.ROOT.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'blocks'.PATH_SEPARATOR
-		.ROOT.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'classes'.PATH_SEPARATOR
-	);
-
-	
-	
 $modulObj = new fmakeAdminContent();
-
 require_once('checklogin.php');
+
 $mod = $modulObj->getModul( $admin->getRole(),$request->modul);
 
 $globalTemplateParam -> set('admin', $admin);
 
-include 'modulNamespace.php';
 
 $template = "admin/main.tpl";
 // Проверка пользователя
@@ -61,6 +49,6 @@ $globalTemplateParam->set('block', $block);
 $globalTemplateParam->set('mod', $mod);
 $globalTemplateParam->set('menu', $menu);
 $globalTemplateParam->set('admin', $admin);
-
+echo $template;
 $template = $twig->loadTemplate($template);
 $template->display($globalTemplateParam->get());

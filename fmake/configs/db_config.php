@@ -5,7 +5,7 @@
 	$dataBase = new dataBaseController(
 						$_SERVER["PHP_SELF"],
 						"root",//пользователь
-						"",//пароль
+						"sqlroot",//пароль
 						"fmake",//имя базы 
 						"localhost",//сервер
 						"",

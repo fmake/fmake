@@ -1,4 +1,6 @@
-	
+[[ extends TEMPLATE_PATH ~ "admin/main.tpl" ]]
+
+	[[ block left_content]]
 	<h1>{mod['caption']}</h1>
 	
 	{mod['text']}
@@ -58,3 +60,5 @@
 			</tr>
 		[[endfor]]	
 	</tbody></table>
+	
+[[endblock]]	
