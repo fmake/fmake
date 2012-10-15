@@ -14,6 +14,5 @@ if($content->file){
 	include($content->file.'.php');
 } 
 
-
 $template = $twig->loadTemplate($modul->template);
 $template->display($globalTemplateParam->get());

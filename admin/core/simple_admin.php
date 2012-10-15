@@ -22,7 +22,7 @@ $actions = array(
 
 $globalTemplateParam -> set('actions', $actions);
 
-	$absitem = new fmakeAdminController($request->id);
+	$absitem = new fmakeAdminContent($request->id);
 	
 	
 	$actions = array('move', 'index', 'inmenu', 'active', 'edit', 'delete');
@@ -101,7 +101,7 @@ switch($request->action)
 	case 'new': // Далее форма
 		$modules = $absitem -> getAllAsTree();
 		$rols = $absitem->getUserObj()->getRoleObj()->getAll();
-		if(!$checkRols)$checkRols = array();
+		if(empty( $checkRols ) )$checkRols = array();
 		
 		$dir = new utlDirectories(ROOT.'/admin/modules');
 		$files = $dir->listing();

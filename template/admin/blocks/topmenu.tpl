@@ -1,7 +1,7 @@
 <div id="topmenu">
 	[[for men in menu]]
 	<div class="menuitem">
-		<a href="./?modul={men['redir']}" [[if men['status']]]class="active" rel_active="active"[[endif]] rel="{loop.index}"><span><span>{men['caption']}</span></span></a>				
+		<a href="/admin/{men['redir']}/" [[if men['status']]]class="active" rel_active="active"[[endif]] rel="{loop.index}"><span><span>{men['caption']}</span></span></a>				
 	</div>
 	[[endfor]]
 </div>

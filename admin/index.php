@@ -45,10 +45,11 @@ if(!$mod) {
 $modulObj->id = $mod['id'];
 $menu = $modulObj->_getAllForMenu(0,true,false,$admin->getRole(),$q=false,$flag=true);
 
+//printAr($menu);
+
 $globalTemplateParam->set('block', $block);
 $globalTemplateParam->set('mod', $mod);
 $globalTemplateParam->set('menu', $menu);
 $globalTemplateParam->set('admin', $admin);
-echo $template;
 $template = $twig->loadTemplate($template);
 $template->display($globalTemplateParam->get());

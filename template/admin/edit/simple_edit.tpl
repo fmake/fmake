@@ -1,4 +1,4 @@
-[[ extends  TEMPLATE_PATH ~ "admin/main.tpl" ]]
+[[ extends  TEMPLATE_PATH ~ "admin/base/main.tpl" ]]
 
 [[block center]]	
 

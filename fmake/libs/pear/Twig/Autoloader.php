@@ -34,11 +34,10 @@ class Twig_Autoloader
      * @return boolean Returns true if the class has been loaded
      */
     static public function autoload($class)
-    {
+    {	
         if (0 !== strpos($class, 'Twig')) {
             return;
         }
-
         if (file_exists($file = dirname(__FILE__).'/../'.str_replace('_', '/', $class).'.php')) {
             require $file;
         }

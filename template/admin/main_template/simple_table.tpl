@@ -1,4 +1,4 @@
-[[ extends  TEMPLATE_PATH ~ "admin/main.tpl" ]]
+[[ extends  TEMPLATE_PATH ~ "admin/base/main.tpl" ]]
 
 [[ block left_content ]]
 	<div id="left">
@@ -9,7 +9,7 @@
 [[block center]]
 
 <h1>Управление контентом</h1>
-<button class="fmk-button-admin" onclick="document.location='/admin/?modul={request.modul}&action=new';return false;"><div><div><div>Добавить</div></div></div></button>
+<button class="fmk-button-admin" onclick="document.location='/admin/{request.modul}/new/';return false;"><div><div><div>Добавить</div></div></div></button>
 <br /><br />
 [[if content]]
 		{content}

@@ -242,4 +242,3 @@ switch($request->action)
 		$template = $block;
 	break;
 }
-?>

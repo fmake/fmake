@@ -1,4 +1,5 @@
 <?PHP
+namespace fmake\libs\requestController;
 /**
  * 
  * Контроль переменных из вне

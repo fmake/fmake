@@ -1,5 +1,12 @@
 <?php
-class fmakeCore extends fmakeWhereSelector{
+namespace fmake\modules\core\fmakeCore;
+/**
+ * 
+ * базовый класс для работы с базой данных
+ *
+ */
+class fmakeCore extends   \fmake\modules\core\fmakeCore\fmakeWhereSelector
+{
 	/**
 	 * 
 	 * параметры текущего объекта
@@ -40,6 +47,11 @@ class fmakeCore extends fmakeWhereSelector{
 	 */
 	public $order = false;
 	/**
+	 * порядок сортировки
+	 * @var string
+	 */
+	public $order_as = false;
+	/**
 	 * 
 	 * класс отображения в системе администрирования, пока не используется 
 	 * @var adminViewer 
@@ -51,7 +63,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * Конструктор
 	 * @param $id если хотим создать клас для определенной записи, то посылаем ему id
 	 */
-	function __construct($id = false){
+	function __construct($id = false)
+	{
 		if($id){
 			$this->id = $id;
 		}
@@ -65,7 +78,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * выставляем класс в конструкторе
 	 * @param $dataBaseSet
 	 */
-	function setDataBase($dataBaseSet = false){
+	function setDataBase($dataBaseSet = false)
+	{
 		if($dataBaseSet){
 			$this->dataBase = &$dataBaseSet;
 		}else{
@@ -77,7 +91,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * 
 	 * класс отображения данного элемента в системе администрирования 
 	 */
-	function getAdminViewer(){
+	function getAdminViewer()
+	{
 		return  $this->adminViewer = new adminViewer();
 	}
 	
@@ -87,7 +102,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * @param string $key
 	 * @param unknown_type $value значение параметра
 	 */
-	function addParam ($key, $value){
+	function addParam ($key, $value)
+	{
 		$this->params[$key] = $value;
 		
 	}
@@ -96,7 +112,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * 
 	 * получаем поля таблицы
 	 */
-	function getFilds(){
+	function getFilds()
+	{
 		$r = $this->dataBase->query("SHOW COLUMNS FROM `".$this->table."`", __LINE__);
 		if ($r && $this->dataBase->num_rows($r)){
 			
@@ -114,7 +131,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * @param string $where условия 
 	 * @param bool $active учитывать выключенные
 	 */
-	function getBySearch($search, $where, $active = false){
+	function getBySearch($search, $where, $active = false)
+	{
 		$select = $this->dataBase->SelectFromDB(__LINE__);
 		if($active) 
 			$select -> addWhere("active='1'");
@@ -130,7 +148,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * 
 	 * Создание нового объекта, с использованием массива params, c учетов поля position
 	 */
-	function newItem(){
+	function newItem()
+	{
 		$insert = $this->dataBase->InsertInToDB(__LINE__);	
 			
 		$insert	-> addTable($this->table);
@@ -158,7 +177,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * Установка id записи
 	 * @param $id
 	 */
-	function setId($id){
+	function setId($id)
+	{
 		$this->id = $id;
 	}
 	
@@ -166,7 +186,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * 
 	 * Удаление записи, перед использованием надо установить id записи
 	 */
-	function delete(){
+	function delete()
+	{
 		$delete = $this->dataBase->DeleteFromDB( __LINE__ );		
 		$delete	-> addTable($this->table) -> addWhere("`".$this->idField."`='".$this->id."'") -> queryDB();
 	}
@@ -174,7 +195,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * 
 	 * Обновление записи, с использованием массива params, перед использованием надо установить id записи 
 	 */
-	function update() {
+	function update()
+	{
 		if(!$this->filds)
 			$this->getFilds();
 
@@ -224,7 +246,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * 
 	 * поднять элемент на уровень выше, изменив поле position, перед использованием надо установить id записи
 	 */
-	function getUp (){
+	function getUp()
+	{
 		
 		$order = $this->getThisOrder();
 		$select = $this->dataBase->SelectFromDB( __LINE__);
@@ -242,15 +265,14 @@ class fmakeCore extends fmakeWhereSelector{
 	 * 
 	 * опустить элемент на уровень ниже, изменив поле position, перед использованием надо установить id записи
 	 */
-	function getDown (){
-		
+	function getDown ()
+	{
 		$order = $this->getThisOrder();
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		$arr = $select -> addFrom($this->table) -> addWhere("`position` > '$order' ") -> addOrder('position', 'ASC')  -> addLimit(0, 1) -> queryDB();
 		$arr = $arr[0];
 
 		if($arr){
-			
 			$update = $this->dataBase->UpdateDB( __LINE__);			
 			$update	-> addTable($this->table) -> addFild("`position`", $order) -> addWhere("`id` = '".$arr['id']."'") -> queryDB();
 			$update	-> addTable($this->table) -> addFild("`position`", $arr['position']) -> addWhere("`id` = '".$this->id."'") -> queryDB();
@@ -261,8 +283,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * 
 	 * активировать элемент, перед использованием надо установить id записи
 	 */
-	function active() {
-		
+	function active() 
+	{
 		$update = $this->dataBase->UpdateDB( __LINE__);	
 		$update	-> addTable($this->table)	-> addFild("active", "NOT(active)", false) -> addWhere("id='".$this->id."'") -> queryDB();
 		
@@ -272,7 +294,7 @@ class fmakeCore extends fmakeWhereSelector{
 	 * получить все данные записи, перед использованием надо установить id записи
 	 * @return array масив всех данных записи
 	 */
-	function getInfo () 
+	function getInfo() 
 	{
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		$arr = $select -> addFrom($this->table) -> addWhere("`".$this->idField."`='".$this->id."'") -> queryDB();	
@@ -284,8 +306,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * @param bool $active учитывать выключенные
 	 * @return array все имеющиеся записи в таблице
 	 */
-	function getAll ($active = false) {
-		
+	function getAll($active = false)
+	{
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		if($this->order)
 			$select -> addOrder($this->order, (($this->order_as)?$this->order_as:'ASC'));
@@ -302,11 +324,13 @@ class fmakeCore extends fmakeWhereSelector{
 	 * @param $page с какой страницы начинаем
 	 * @param $active учитывать выключенные
 	 */
-	function getByPage($limit, $page, $active = false) {
+	function getByPage($limit, $page, $active = false)
+	{
 		
 		$select = $this->dataBase->SelectFromDB( __LINE__);
-		if($active)
+		if($active){
 			$select -> addWhere("active='1'");
+		}
 		return $select -> addFrom($this->table) -> addOrder($this->order, DESC) -> addLimit((($page-1)*$limit), $limit) -> queryDB();
 	}
 	/**
@@ -314,10 +338,12 @@ class fmakeCore extends fmakeWhereSelector{
 	 * Получить колличество записей в таблице
 	 * @param $active учитывать выключенные
 	 */
-	function getNumRows($active = false) {	
+	function getNumRows($active = false)
+	{	
 		$select = $this->dataBase->SelectFromDB( __LINE__);
-		if($active)
+		if($active){
 			$select -> addWhere("active='1'");
+		}
 		$count = $select -> addFild("COUNT(*)") -> addFrom($this->table) -> queryDB();
 		return $count[0]["COUNT(*)"];
 	}
@@ -325,7 +351,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * 
 	 * Очистить основную таблицу
 	 */
-	function truncateTable(){
+	function truncateTable()
+	{
 		$SQL = "TRUNCATE TABLE `".$this->table."`";
 		$this->dataBase->query($SQL, __LINE__);
 	}
@@ -361,8 +388,8 @@ class fmakeCore extends fmakeWhereSelector{
 	 * 
 	 * Использование методов класса
 	 */
-	function test(){
-		
+	function test()
+	{
 		$classObg = new fmakeCore();
 		// установите экспериментальную таблицу, для проверки
 		$classObg->table = "";
@@ -420,4 +447,3 @@ class fmakeCore extends fmakeWhereSelector{
 	}
 	
 }
-?>

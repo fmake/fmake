@@ -1,6 +1,6 @@
-[[ extends TEMPLATE_PATH ~ "admin/main.tpl" ]]
+[[ extends TEMPLATE_PATH ~ "admin/base/main.tpl" ]]
 
-	[[ block left_content]]
+	[[ block center]]
 	<h1>{mod['caption']}</h1>
 	
 	{mod['text']}
@@ -15,7 +15,7 @@
 			<tr>
 				<td class="rt-ml"></td>
 				<td class="rt-mc" >
-					<a href="/admin/?modul={request.modul}&action=new" class="action-link" ><div><img src="/images/admin/and.png" alt="" /></div>Добавить страницу</a>
+					<a href="/admin/{request.modul}/new/" class="action-link" ><div><img src="/images/admin/and.png" alt="" /></div>Добавить страницу</a>
 				</td>
 				<td class="rt-mr" ></td>
 			</tr>

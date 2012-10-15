@@ -1,10 +1,10 @@
 <?php
+
 	header('Content-type: text/html; charset=utf-8');
 	setlocale(LC_ALL, 'ru_RU.UTF-8');
 	mb_internal_encoding('UTF-8');
 	ini_set('display_errors',1);
 	error_reporting(E_ALL);
-	
 	require 'configs/main.php';
 	/**
 	 * загружаем шаблонизатор
@@ -18,7 +18,8 @@
 	/**
 	 *  лог запросов 
 	 */
-	$log = new dataBaseController_logFile(ROOT.CACHE."/sql.html", SQL_LOG);	
+
+	$log = new  fmake\libs\dataBase\logFile(ROOT.CACHE."/sql.html", SQL_LOG);	
 	$dataBase -> addLog($log);			
 	/**
 	 * делаем коннект к базе данных
@@ -36,7 +37,7 @@
 	/**
 	 * обработчик информации из вне, get, post 
 	 */
-	$request = new requestController();
+	$request = new fmake\libs\requestController\requestController();
 	$globalTemplateParam->set('request', $request);
 	/**
 	 * защита от sql иньекций, если включен защищенный режим 
@@ -45,11 +46,7 @@
 		$request->allSqlInjectionNone();
 	}
 	/**
-	 * обработчик сессии
-	 */
-	$session = new sessionController();
-	/**
 	 * создаем класс глобальных параметров
 	 */
-	$configs = new fmakeConfigs();
+	$configs = new fmake\libs\requestController\fmakeConfigs\fmakeConfigs();
 	$globalTemplateParam->set('configs',$configs);

@@ -29,15 +29,31 @@
 		
 		
 		static function createObj($name){
+			echo $name."<br />";
+			$className = ltrim($name, '\\');
+			$fileName  = '';
+			$namespace = '';
+			if ($lastNsPos = strripos($className, '\\')) {
+				$namespace = substr($className, 0, $lastNsPos);
+				$className = substr($className, $lastNsPos + 1);
+				$fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+			}
+			$fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 			
+			echo $fileName."<br />";
+			require  $fileName;
+			/*
 			//выкачиваем все патхи
 			$paths = explode(PATH_SEPARATOR, get_include_path());
 			//заменяем _ на / для того что бы загрузить вспомогательные классы в папке
 			$name = str_replace('_', '/', $name);
+			$name = str_replace('\\', '/', $name);
+			echo $name."<br/>";
 			$include = objectCreater::add_include_path( $name, $paths );
 			if($include){
 				require $include;
 			}
+			*/
 		}
 		
 		static function add_include_path ($name, $paths){

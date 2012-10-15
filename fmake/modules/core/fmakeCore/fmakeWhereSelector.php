@@ -1,4 +1,5 @@
 <?php 
+namespace fmake\modules\core\fmakeCore;
 class fmakeWhereSelector{
 		/**
 	 * @var dataBaseController

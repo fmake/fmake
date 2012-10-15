@@ -2,7 +2,7 @@
 	/**
 	 * Создаем основной класс для соединения с базой данных 
 	 */ 
-	$dataBase = new dataBaseController(
+	$dataBase = new fmake\libs\dataBase\dataBaseController(
 						$_SERVER["PHP_SELF"],
 						"root",//пользователь
 						"sqlroot",//пароль

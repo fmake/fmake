@@ -1,5 +1,6 @@
 <?php
-class fmakeConfigs extends fmakeCore{
+namespace fmake\modules\core\fmakeConfigs;
+class fmakeConfigs extends \fmake\modules\core\fmakeCore\fmakeCore{
 	
 	public $table = "configs";
 
