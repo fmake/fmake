@@ -5,7 +5,9 @@
  * @author n1k
  *
  */
-class fmakeModule_config extends fmakeCore{
+namespace fmake\modules\core\fmakeModule;
+use fmake\modules\core\fmakeCore\fmakeCore;
+class config extends fmakeCore{
 	public $idField = "id_modules_config";
 	public $table = "modules_configs";
 }

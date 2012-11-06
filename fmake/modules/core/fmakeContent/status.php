@@ -1,4 +1,6 @@
 <?php
+namespace fmake\modules\core\fmakeContent;
+use fmake\modules\core\fmakeCore\fmakeCore;
 	/**
 	 * значения статусов
 	 */
@@ -14,8 +16,8 @@
 	 * опубликована в основном меню
 	*/
 	define('CONTENT_MENU', 2);
-
-	class fmakeSiteModule_status extends fmakeCore{
+	
+	class status extends fmakeCore{
 		public $idField = "id_content_status";
 		public $table = "content_status";
 		

@@ -1,4 +1,6 @@
 <?php
+namespace fmake\modules\core\fmakeSiteUser;
+use fmake\modules\core\fmakeCore\fmakeCore;
 	/**
 	*
 	* Пользователь системы

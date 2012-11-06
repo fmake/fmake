@@ -1,6 +1,7 @@
 <?php
-
-class fmakeAdminContent_users extends fmakeCore{
+namespace fmake\modules\core\fmakeAdminContent;
+use fmake\modules\core\fmakeCore\fmakeCore;
+class users extends fmakeCore{
 	
 	public $table = "admin_user";
 	public $id; 	// int

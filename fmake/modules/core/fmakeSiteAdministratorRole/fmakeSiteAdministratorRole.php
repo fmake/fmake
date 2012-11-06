@@ -1,4 +1,6 @@
 <?php
+namespace fmake\modules\core\fmakeSiteAdministratorRole;
+use fmake\modules\core\fmakeCore\fmakeCore;
 class fmakeSiteAdministratorRole extends fmakeCore{
 	
 	public $table = "site_administrator_role";

@@ -1,5 +1,7 @@
 <?php
-class fmakeSiteUser_role extends fmakeCore{
+namespace fmake\modules\core\fmakeSiteUser;
+use fmake\modules\core\fmakeCore\fmakeCore;
+class role extends fmakeCore{
 	
 	public $table = "site_modul_role";
 	

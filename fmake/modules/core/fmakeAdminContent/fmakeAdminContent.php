@@ -1,4 +1,6 @@
 <?php
+namespace fmake\modules\core\fmakeAdminContent;
+use fmake\modules\core\fmakeCore\fmakeCore;
 class fmakeAdminContent extends fmakeCore{
 	
 	public $table = "admin_content";

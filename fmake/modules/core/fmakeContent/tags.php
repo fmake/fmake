@@ -1,6 +1,7 @@
 <?php
-
-	class fmakeSiteModule_tags extends fmakeCore{
+namespace fmake\modules\core\fmakeContent;
+use fmake\modules\core\fmakeCore\fmakeCore;
+	class tags extends fmakeCore{
 		
 		public $idField = "id_tag";
 		public $table = "tags";

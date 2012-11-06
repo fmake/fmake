@@ -1,4 +1,6 @@
-<?php 
+<?php
+namespace fmake\modules\core\fmakeAccess;
+use fmake\modules\core\fmakeCore\fmakeCore;
 	class fmakeAccess extends fmakeCore{
 		
 		function getAccessQuery($field,$where){

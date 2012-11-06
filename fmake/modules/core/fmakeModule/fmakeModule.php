@@ -5,6 +5,8 @@
  * @author n1k
  *
  */
+namespace fmake\modules\core\fmakeModule;
+use fmake\modules\core\fmakeCore\fmakeCore;
 class fmakeModule extends fmakeCore{
 	public $idField = "id_module";
 	public $table = "modules";

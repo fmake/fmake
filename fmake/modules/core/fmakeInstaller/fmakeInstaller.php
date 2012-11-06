@@ -5,6 +5,8 @@
  * @author n1k
  *
  */
+namespace fmake\modules\core\fmakeInstaller;
+use fmake\modules\core\fmakeCore\fmakeCore;
 class fmakeInstaller extends fmakeCore{
 	private $extractFolder = "";
 	private $constant = array(

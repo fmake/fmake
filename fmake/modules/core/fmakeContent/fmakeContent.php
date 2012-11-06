@@ -1,4 +1,6 @@
 <?php
+namespace fmake\modules\core\fmakeContent;
+use fmake\modules\core\fmakeCore\fmakeCore;
 /**
  * 
  * Основной контент сайта

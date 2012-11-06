@@ -1,7 +1,7 @@
 <?php
 require('./fmake/FController.php');
 
-$content = new fmakeContent();
+$content = new fmake\modules\core\fmakeContent\fmakeContent();
 $content->getPage($request -> getEscape('modul'));
 $globalTemplateParam->set('content',$content);
 
@@ -13,6 +13,7 @@ $content->template = 'base/main.tpl';
 if($content->file){
 	include($content->file.'.php');
 } 
+
 
 $template = $twig->loadTemplate($modul->template);
 $template->display($globalTemplateParam->get());

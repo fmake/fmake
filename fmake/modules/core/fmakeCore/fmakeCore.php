@@ -5,7 +5,7 @@ namespace fmake\modules\core\fmakeCore;
  * базовый класс для работы с базой данных
  *
  */
-class fmakeCore extends   \fmake\modules\core\fmakeCore\fmakeWhereSelector
+class fmakeCore extends  fmakeWhereSelector
 {
 	/**
 	 * 

@@ -11,7 +11,8 @@
 		static $extension = ".php";
 		
 		
-		static function setDirPaths(){
+		static function setDirPaths()
+		{
 			set_include_path(
 				get_include_path().ROOT.DIRECTORY_SEPARATOR.PATH_SEPARATOR
 				.ROOT.DIRECTORY_SEPARATOR.'fmake'.DIRECTORY_SEPARATOR.'libs'.DIRECTORY_SEPARATOR.PATH_SEPARATOR
@@ -28,73 +29,62 @@
 		}
 		
 		
-		static function createObj($name){
+		static function createObj($name)
+		{
 			echo $name."<br />";
-			$className = ltrim($name, '\\');
-			$fileName  = '';
-			$namespace = '';
-			if ($lastNsPos = strripos($className, '\\')) {
-				$namespace = substr($className, 0, $lastNsPos);
-				$className = substr($className, $lastNsPos + 1);
-				$fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+			$fileName = self::findFile($name);
+			if($fileName){
+				require  $fileName;
 			}
-			$fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+
+		}
+		
+		public function findFile($class)
+		{
+			/*if (isset($this->classMap[$class])) {
+				return $this->classMap[$class];
+			}
+		*/
+			if ('\\' == $class[0]) {
+				$class = substr($class, 1);
+			}
+		
+			if (false !== $pos = strrpos($class, '\\')) {
+				// namespaced class name
+				$classPath = str_replace('\\', DIRECTORY_SEPARATOR, substr($class, 0, $pos)) . DIRECTORY_SEPARATOR;
+				$className = substr($class, $pos + 1);
+			} else {
+				// PEAR-like class name
+				$classPath = $class.DIRECTORY_SEPARATOR;
+				$className = $class;
+			}
+		
 			
-			echo $fileName."<br />";
-			require  $fileName;
+			$classPath .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+			echo $classPath;
 			/*
-			//выкачиваем все патхи
-			$paths = explode(PATH_SEPARATOR, get_include_path());
-			//заменяем _ на / для того что бы загрузить вспомогательные классы в папке
-			$name = str_replace('_', '/', $name);
-			$name = str_replace('\\', '/', $name);
-			echo $name."<br/>";
-			$include = objectCreater::add_include_path( $name, $paths );
-			if($include){
-				require $include;
+			foreach ($this->prefixes as $prefix => $dirs) {
+				if (0 === strpos($class, $prefix)) {
+					foreach ($dirs as $dir) {
+						if (file_exists($dir . DIRECTORY_SEPARATOR . $classPath)) {
+							return $dir . DIRECTORY_SEPARATOR . $classPath;
+						}
+					}
+				}
+			}
+		
+			foreach ($this->fallbackDirs as $dir) {
+				if (file_exists($dir . DIRECTORY_SEPARATOR . $classPath)) {
+					return $dir . DIRECTORY_SEPARATOR . $classPath;
+				}
 			}
 			*/
-		}
-		
-		static function add_include_path ($name, $paths){
-		    foreach ($paths AS $path){
-
-		        if ( file_exists($fullPath = $path.$name.DIRECTORY_SEPARATOR.$name.objectCreater::$extension) ){
-					set_include_path(get_include_path() . PATH_SEPARATOR . $path.$name.DIRECTORY_SEPARATOR);
-		        	return $fullPath;
-		        }
-		       
-		    	if ( file_exists($fullPath = $path.$name.objectCreater::$extension) ){
-		        	return $fullPath;
-		        }
-		        
-		        
-		    }
-		}
-	
-		static function remove_include_path ($path){
 			
-		    foreach (func_get_args() AS $path)
-		    {
-		        $paths = explode(PATH_SEPARATOR, get_include_path());
-		       
-		        if (($k = array_search($path, $paths)) !== false)
-		            unset($paths[$k]);
-		        else
-		            continue;
-		       
-		        if (!count($paths))
-		        {
-		            //trigger_error("Include path '{$path}' can not be removed because it is the only", E_USER_NOTICE);
-		            continue;
-		        }
-		       
-		        set_include_path(implode(PATH_SEPARATOR, $paths));
-		    }
+			if ($file = stream_resolve_include_path($classPath)) {
+				return $file;
+			}
+		
+			//$this->classMap[$class] = false;
 		}
-		
-		
-		
-		
 		
 	}

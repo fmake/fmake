@@ -1,5 +1,6 @@
 <?php
-class templateController_templateParam{
+namespace fmake\libs\templateController;
+class templateParam{
 	private $params = array();
 	
 	function __construct(){;}
